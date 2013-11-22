@@ -90,9 +90,9 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void zoom(int perspectiveIndex) {
+	public void zoom(int perspectiveIndex, float unZoom) {
 		Perspective perspective = perspectives.get(perspectiveIndex);
-		ZoomCommand zoom = new ZoomCommand(perspective);
+		ZoomCommand zoom = new ZoomCommand(perspective,unZoom);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(zoom);
 	}
