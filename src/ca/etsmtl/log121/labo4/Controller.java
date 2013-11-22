@@ -1,5 +1,7 @@
 package ca.etsmtl.log121.labo4;
 
+import java.io.IOException;
+
 import ca.etsmtl.log121.labo4.commands.*;
 import ca.etsmtl.log121.labo4.models.*;
 
@@ -17,6 +19,10 @@ public class Controller
 	 */
 	public Controller(){
 		
+	}
+	
+	public void loadImage(String path) throws IOException {
+		imageModel.load(path);
 	}
 
 	/**
