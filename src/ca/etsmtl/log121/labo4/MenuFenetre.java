@@ -38,7 +38,9 @@ public class MenuFenetre extends JMenuBar {
 	private static final int MENU_DESSIN_DEMARRER_TOUCHE_MASK = ActionEvent.CTRL_MASK; // NOPMD by Gabriel on 13-10-17 19:15
 	private static final char MENU_DESSIN_DEMARRER_TOUCHE_RACC = KeyEvent.VK_D; // NOPMD by Gabriel on 13-10-17 19:15
 	private static final int MENU_FICHIER_QUITTER_TOUCHE_MASK = ActionEvent.CTRL_MASK; // NOPMD by Gabriel on 13-10-17 19:15
-	private static final char MENU_FICHIER_QUITTER_TOUCHE_RACC = KeyEvent.VK_Q; // NOPMD by Gabriel on 13-10-17 19:15
+	private static final char MENU_FICHIER_QUITTER_TOUCHE_RACC = KeyEvent.VK_Z; // NOPMD by Gabriel on 13-10-17 19:15
+	private static final int MENU_FICHIER_FORMES_TOUCHE_MASK = ActionEvent.CTRL_MASK; // NOPMD by Gabriel on 13-10-17 19:15
+	private static final char MENU_FICHIER_FORMES_TOUCHE_RACC = KeyEvent.VK_Y; // NOPMD by Gabriel on 13-10-17 19:15
 	private static final String MENU_FICHIER_TITRE = "app.frame.menus.file.title", // NOPMD by Gabriel on 13-10-17 19:14
 			MENU_FICHIER_QUITTER = "app.frame.menus.file.exit", // NOPMD by Gabriel on 13-10-17 19:15
 			MENU_DESSIN_TITRE = "app.frame.menus.draw.title",
@@ -47,6 +49,7 @@ public class MenuFenetre extends JMenuBar {
 			MENU_FICHIER_FORMES = "app.frame.menus.file.formes", // NOPMD by Gabriel on 13-10-17 19:16
 			MENU_AIDE_TITRE = "app.frame.menus.help.title",
 			MENU_AIDE_PROPOS = "app.frame.menus.help.about";
+	
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about"; // NOPMD by Gabriel on 13-10-17 19:15
 
 	private JMenuItem arreterMenuItem, demarrerMenuItem, obtenirformesMenuItem; // NOPMD by Gabriel on 13-10-17 19:15
@@ -57,9 +60,9 @@ public class MenuFenetre extends JMenuBar {
 	 * Constructeur
 	 */
 	public MenuFenetre() {
-		addMenuDessiner();
 		addMenuFichier();
-		addMenuOrdre();
+		addMenuEdit();
+		//addMenuOrdre();
 		addMenuAide();
 	}
 
@@ -67,7 +70,7 @@ public class MenuFenetre extends JMenuBar {
 	 * Créer le menu "Draw".
 	 */
 
-	protected void addMenuDessiner() {
+	protected void addMenuFichier() {
 		JMenu menu = creerMenu(MENU_DESSIN_TITRE, new String[] {
 				MENU_DESSIN_DEMARRER, MENU_DESSIN_ARRETER});
 
@@ -99,7 +102,7 @@ public class MenuFenetre extends JMenuBar {
 	/**
 	 * Créer le menu "File".
 	 */
-	protected void addMenuFichier() {
+	protected void addMenuEdit() {
 		JMenu menu = creerMenu(MENU_FICHIER_TITRE,
 				new String[] { MENU_FICHIER_QUITTER, MENU_FICHIER_FORMES });
 		menu.getItem(0).addActionListener(new ActionListener() {
@@ -123,9 +126,12 @@ public class MenuFenetre extends JMenuBar {
 				//rafraichirMenus();
 			}
 		});
+		menu.getItem(1).setAccelerator(KeyStroke.getKeyStroke(
+				MENU_FICHIER_FORMES_TOUCHE_RACC,
+				MENU_FICHIER_FORMES_TOUCHE_MASK));
 		add(menu);
 	}
-	
+	/*
 	protected void addMenuOrdre() {
 		JMenu menu = new JMenu("Ordre");
 		ButtonGroup directionGroup = new ButtonGroup();
@@ -232,7 +238,7 @@ public class MenuFenetre extends JMenuBar {
 		
 		add(menu);
 	}
-
+	*/
 	/**
 	 * Créer le menu "Help".
 	 */
