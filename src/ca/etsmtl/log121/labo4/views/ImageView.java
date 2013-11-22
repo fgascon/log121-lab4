@@ -1,4 +1,9 @@
-package ca.etsmtl.log121.labo4;
+package ca.etsmtl.log121.labo4.views;
+
+import java.util.Observable;
+
+import ca.etsmtl.log121.labo4.FenetrePrincipale;
+import ca.etsmtl.log121.labo4.models.ImageModel;
 
 
 /**
@@ -7,7 +12,7 @@ package ca.etsmtl.log121.labo4;
  * @generated
  */
 
-public class Perspective
+public class ImageView
 {
 	/**
 	 * <!-- begin-user-doc -->
@@ -16,7 +21,7 @@ public class Perspective
 	 * @ordered
 	 */
 	
-	private Coordonnee coordonnee;
+	private ImageModel image;
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -25,25 +30,27 @@ public class Perspective
 	 * @ordered
 	 */
 	
-	public Coordonnee coordonnee2;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public ImageModel image;
+	public FenetrePrincipale fenetrePrincipale;
 	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
-	public Perspective(){
+	public ImageView(){
 		super();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	
+	public void update(Observable observable, Object objet) {
+		// TODO : to implement	
+	}
+	
 }
 

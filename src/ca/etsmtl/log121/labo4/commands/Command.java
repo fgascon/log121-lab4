@@ -1,4 +1,4 @@
-package ca.etsmtl.log121.labo4;
+package ca.etsmtl.log121.labo4.commands;
 
 
 

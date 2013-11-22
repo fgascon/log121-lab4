@@ -2,6 +2,8 @@ package ca.etsmtl.log121.labo4;
 import java.util.Set;
 import java.util.HashSet;
 
+import ca.etsmtl.log121.labo4.views.ImageView;
+
 
 /**
  * <!-- begin-user-doc -->

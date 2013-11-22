@@ -1,5 +1,7 @@
 package ca.etsmtl.log121.labo4;
 
+import ca.etsmtl.log121.labo4.models.Perspective;
+
 
 /**
  * <!-- begin-user-doc -->

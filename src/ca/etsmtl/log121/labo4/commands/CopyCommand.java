@@ -1,4 +1,4 @@
-package ca.etsmtl.log121.labo4;
+package ca.etsmtl.log121.labo4.commands;
 
 
 /**
@@ -7,14 +7,23 @@ package ca.etsmtl.log121.labo4;
  * @generated
  */
 
-public class CommandManager
+public class CopyCommand implements Command
 {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
 	 * @generated
+	 * @ordered
 	 */
-	public CommandManager(){
+	
+	private CommandManager commandManager;
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 */
+	public CopyCommand(){
 		super();
 	}
 
@@ -25,19 +34,7 @@ public class CommandManager
 	 * @ordered
 	 */
 	
-	public static CommandManager getInstance() {
-		// TODO : to implement
-		return new CommandManager();	
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void undo() {
+	public void execute() {
 		// TODO : to implement	
 	}
 	
@@ -48,7 +45,7 @@ public class CommandManager
 	 * @ordered
 	 */
 	
-	public void redo() {
+	public void unexecute() {
 		// TODO : to implement	
 	}
 	

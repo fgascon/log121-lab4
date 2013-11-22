@@ -1,7 +1,6 @@
-package ca.etsmtl.log121.labo4;
+package ca.etsmtl.log121.labo4.models;
 
-import java.util.Set;
-import java.util.Observable;
+import ca.etsmtl.log121.labo4.Coordonnee;
 
 
 /**
@@ -10,7 +9,7 @@ import java.util.Observable;
  * @generated
  */
 
-public class ImageModel extends Observable
+public class Perspective
 {
 	/**
 	 * <!-- begin-user-doc -->
@@ -19,17 +18,8 @@ public class ImageModel extends Observable
 	 * @ordered
 	 */
 	
-	private Set<Perspective> perspective;
+	private Coordonnee coordonnee;
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public ImageModel(){
-		super();
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
@@ -37,10 +27,25 @@ public class ImageModel extends Observable
 	 * @ordered
 	 */
 	
-	public Perspective getPerspective(int index) {
-		// TODO : to implement
-		return new Perspective();	
-	}
+	public Coordonnee coordonnee2;
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	
+	public ImageModel image;
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 */
+	public Perspective(){
+		super();
+	}
+
 }
 

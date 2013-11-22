@@ -1,6 +1,4 @@
-package ca.etsmtl.log121.labo4;
-
-import java.util.Observable;
+package ca.etsmtl.log121.labo4.commands;
 
 
 /**
@@ -9,7 +7,7 @@ import java.util.Observable;
  * @generated
  */
 
-public class ImageView
+public class TranslationCommand implements Command
 {
 	/**
 	 * <!-- begin-user-doc -->
@@ -18,23 +16,14 @@ public class ImageView
 	 * @ordered
 	 */
 	
-	private ImageModel image;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public FenetrePrincipale fenetrePrincipale;
+	private CommandManager commandManager;
 	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
-	public ImageView(){
+	public TranslationCommand(){
 		super();
 	}
 
@@ -45,7 +34,18 @@ public class ImageView
 	 * @ordered
 	 */
 	
-	public void update(Observable observable, Object objet) {
+	public void execute() {
+		// TODO : to implement	
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	
+	public void unexecute() {
 		// TODO : to implement	
 	}
 	

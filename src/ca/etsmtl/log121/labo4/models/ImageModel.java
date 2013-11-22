@@ -1,4 +1,7 @@
-package ca.etsmtl.log121.labo4;
+package ca.etsmtl.log121.labo4.models;
+
+import java.util.Set;
+import java.util.Observable;
 
 
 /**
@@ -7,7 +10,7 @@ package ca.etsmtl.log121.labo4;
  * @generated
  */
 
-public class CopyCommand implements Command
+public class ImageModel extends Observable
 {
 	/**
 	 * <!-- begin-user-doc -->
@@ -16,14 +19,14 @@ public class CopyCommand implements Command
 	 * @ordered
 	 */
 	
-	private CommandManager commandManager;
+	private Set<Perspective> perspective;
 	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
-	public CopyCommand(){
+	public ImageModel(){
 		super();
 	}
 
@@ -34,19 +37,9 @@ public class CopyCommand implements Command
 	 * @ordered
 	 */
 	
-	public void execute() {
-		// TODO : to implement	
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void unexecute() {
-		// TODO : to implement	
+	public Perspective getPerspective(int index) {
+		// TODO : to implement
+		return new Perspective();	
 	}
 	
 }

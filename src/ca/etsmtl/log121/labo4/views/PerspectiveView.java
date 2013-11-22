@@ -1,4 +1,8 @@
-package ca.etsmtl.log121.labo4;
+package ca.etsmtl.log121.labo4.views;
+
+import java.util.Observable;
+
+import ca.etsmtl.log121.labo4.models.Perspective;
 
 
 /**
@@ -7,7 +11,7 @@ package ca.etsmtl.log121.labo4;
  * @generated
  */
 
-public class TranslationCommand implements Command
+public class PerspectiveView extends ImageView
 {
 	/**
 	 * <!-- begin-user-doc -->
@@ -16,14 +20,14 @@ public class TranslationCommand implements Command
 	 * @ordered
 	 */
 	
-	private CommandManager commandManager;
+	private Perspective perspective;
 	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
-	public TranslationCommand(){
+	public PerspectiveView(){
 		super();
 	}
 
@@ -34,18 +38,7 @@ public class TranslationCommand implements Command
 	 * @ordered
 	 */
 	
-	public void execute() {
-		// TODO : to implement	
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void unexecute() {
+	public void update(Observable observable, Object objet) {
 		// TODO : to implement	
 	}
 	
