@@ -1,6 +1,9 @@
 package ca.etsmtl.log121.labo4;
+import java.awt.BorderLayout;
 import java.util.Set;
 import java.util.HashSet;
+
+import javax.swing.JFrame;
 
 import ca.etsmtl.log121.labo4.views.ImageView;
 
@@ -11,14 +14,10 @@ import ca.etsmtl.log121.labo4.views.ImageView;
  * @generated
  */
 
-public class FenetrePrincipale
+public class FenetrePrincipale extends JFrame
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+	private final int DEFAULT_WIDTH = 750;
+	private final int DEFAULT_HEIGHT = 500;
 	
 	public Set<ImageView> imageView;
 	
@@ -37,7 +36,8 @@ public class FenetrePrincipale
 	 * @generated
 	 */
 	public FenetrePrincipale(){
-		super();
+		this.setLayout(new BorderLayout());
+		this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	}
 
 	/**

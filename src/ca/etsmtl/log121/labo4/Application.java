@@ -1,6 +1,8 @@
 package ca.etsmtl.log121.labo4;
 
 
+
+
 /**
  * <!-- begin-user-doc -->
  * <!--  end-user-doc  -->
@@ -9,12 +11,11 @@ package ca.etsmtl.log121.labo4;
 
 public class Application
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+	
+	public static void main(String[] args) {
+		new Application();
+
+	}
 	
 	public FenetrePrincipale fenetrePrincipale;
 	
@@ -24,7 +25,9 @@ public class Application
 	 * @generated
 	 */
 	public Application(){
-		super();
+		FenetrePrincipale uneFenetre = new FenetrePrincipale();
+		uneFenetre.show();
+		
 	}
 
 	/**
