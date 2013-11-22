@@ -1,5 +1,7 @@
 package ca.etsmtl.log121.labo4.commands;
 
+import ca.etsmtl.log121.labo4.models.Perspective;
+
 
 /**
  * 
@@ -7,9 +9,10 @@ package ca.etsmtl.log121.labo4.commands;
 public class ZoomCommand implements Command {
 	
 	/**
+	 * @param perspective 
 	 * 
 	 */
-	public ZoomCommand() {
+	public ZoomCommand(Perspective perspective) {
 		
 	}
 	

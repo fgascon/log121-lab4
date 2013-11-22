@@ -1,6 +1,7 @@
 package ca.etsmtl.log121.labo4;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import ca.etsmtl.log121.labo4.commands.*;
 import ca.etsmtl.log121.labo4.models.*;
@@ -12,13 +13,21 @@ import ca.etsmtl.log121.labo4.models.*;
 public class Controller
 {
 	
+	/**
+	 * 
+	 */
 	private final ImageModel imageModel = new ImageModel();
+	
+	private final ArrayList<Perspective> perspectives;
 	
 	/**
 	 * 
 	 */
-	public Controller(){
-		
+	public Controller(int nbPerspective){
+		perspectives = new ArrayList<Perspective>(nbPerspective);
+		for(int i=0; i<nbPerspective; i++) {
+			perspectives.add(new Perspective());
+		}
 	}
 	
 	public void loadImage(String path) throws IOException {
@@ -66,8 +75,9 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void translate() {
-		TranslationCommand translation = new TranslationCommand();
+	public void translate(int perspectiveIndex) {
+		Perspective perspective = perspectives.get(perspectiveIndex);
+		TranslationCommand translation = new TranslationCommand(perspective);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(translation);
 	}
@@ -75,8 +85,9 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void zoom() {
-		ZoomCommand zoom = new ZoomCommand();
+	public void zoom(int perspectiveIndex) {
+		Perspective perspective = perspectives.get(perspectiveIndex);
+		ZoomCommand zoom = new ZoomCommand(perspective);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(zoom);
 	}
