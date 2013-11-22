@@ -1,97 +1,57 @@
 package ca.etsmtl.log121.labo4;
 
-import ca.etsmtl.log121.labo4.models.Perspective;
-
-
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ * 
  */
-
 public class Coordonnee
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
 	private int positionX;
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
 	private int positionY;
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
-	public Perspective perspective;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public Coordonnee(){
-		super();
+	public Coordonnee(int positionX, int positionY){
+		this.positionX = positionX;
+		this.positionY = positionY;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
 	public int getX() {
-		// TODO : to implement
-		return 0;	
+		return positionX;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
 	public int getY() {
-		// TODO : to implement
-		return 0;	
+		return positionY;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
-	public void setX(int cooX) {
-		// TODO : to implement	
+	public void setX(int value) {
+		positionX = value;
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
-	public void setY(int cooY) {
-		// TODO : to implement	
+	public void setY(int value) {
+		positionX = value;
 	}
 	
+	public Coordonnee copy() {
+		return new Coordonnee(positionX, positionY);
+	}
 }
-

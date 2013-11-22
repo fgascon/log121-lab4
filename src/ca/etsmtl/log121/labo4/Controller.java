@@ -1,66 +1,84 @@
 package ca.etsmtl.log121.labo4;
 
+import java.io.IOException;
+
+import ca.etsmtl.log121.labo4.commands.*;
+import ca.etsmtl.log121.labo4.models.*;
+
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ * 
  */
-
 public class Controller
 {
+	
+	private final ImageModel imageModel = new ImageModel();
+	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
+	 * 
 	 */
 	public Controller(){
-		super();
+		
+	}
+	
+	public void loadImage(String path) throws IOException {
+		imageModel.load(path);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
 	public void undo() {
-		// TODO : to implement	
+		CommandManager commandManager = CommandManager.getInstance();
+		if(commandManager.canUndo()) {
+			commandManager.undo();
+		}
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
 	public void redo() {
-		// TODO : to implement	
+		CommandManager commandManager = CommandManager.getInstance();
+		if(commandManager.canRedo()) {
+			commandManager.redo();
+		}
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
+	public void copy() {
+		CopyCommand copy = new CopyCommand();
+		CommandManager commandManager = CommandManager.getInstance();
+		commandManager.execute(copy);
+	}
 	
+	/**
+	 * 
+	 */
+	public void paste() {
+		PasteCommand paste = new PasteCommand();
+		CommandManager commandManager = CommandManager.getInstance();
+		commandManager.execute(paste);
+	}
+	
+	/**
+	 * 
+	 */
 	public void translate() {
-		// TODO : to implement	
+		TranslationCommand translation = new TranslationCommand();
+		CommandManager commandManager = CommandManager.getInstance();
+		commandManager.execute(translation);
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
 	public void zoom() {
-		// TODO : to implement	
+		ZoomCommand zoom = new ZoomCommand();
+		CommandManager commandManager = CommandManager.getInstance();
+		commandManager.execute(zoom);
 	}
-	
 }
 

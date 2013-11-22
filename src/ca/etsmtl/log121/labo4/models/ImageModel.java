@@ -1,46 +1,52 @@
 package ca.etsmtl.log121.labo4.models;
 
-import java.util.Set;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Observable;
+
+import javax.imageio.ImageIO;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ * 
  */
-
-public class ImageModel extends Observable
-{
+public class ImageModel extends Observable {
+	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
-	private Set<Perspective> perspective;
+	private final ArrayList<Perspective> perspective = new ArrayList<Perspective>();
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
+	 * 
+	 */
+	private Image image;
+	
+	/**
+	 * 
 	 */
 	public ImageModel(){
-		super();
+		image = new BufferedImage(256, 256, BufferedImage.TYPE_INT_RGB);
 	}
-
+	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * @param path le chemin d'accès vers l'image
+	 * @throws IOException erreur durant le chargement de l'image
 	 */
-	
-	public Perspective getPerspective(int index) {
-		// TODO : to implement
-		return new Perspective();	
+	public void load(String path) throws IOException {
+		File file = new File(path);
+		image = ImageIO.read(file);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
+	public Image getImage() {
+		return image;
+	}
 }
-

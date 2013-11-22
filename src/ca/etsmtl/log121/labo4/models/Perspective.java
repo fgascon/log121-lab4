@@ -1,51 +1,45 @@
 package ca.etsmtl.log121.labo4.models;
 
+import java.util.Observable;
+
 import ca.etsmtl.log121.labo4.Coordonnee;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ * 
  */
-
-public class Perspective
-{
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+public class Perspective extends Observable {
 	
+	/**
+	 * 
+	 */
 	private Coordonnee coordonnee;
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
-	public Coordonnee coordonnee2;
+	private int zoom;
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	
-	public ImageModel image;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public Perspective(){
-		super();
+	public Perspective() {
+		
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getZoom() {
+		return zoom;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Coordonnee getPosition() {
+		return coordonnee.copy();
+	}
 }
-
