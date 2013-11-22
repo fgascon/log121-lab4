@@ -16,7 +16,7 @@ public class ZoomCommand implements Command {
 	 * @param perspective 
 	 * 
 	 */
-	public ZoomCommand(Perspective perspective,float unZoom) {
+	public ZoomCommand(Perspective perspective, float unZoom) {
 		laPerspective = perspective;
 		baseZoom = perspective.getZoom();
 		zoomFactor = unZoom;
@@ -26,7 +26,7 @@ public class ZoomCommand implements Command {
 	 * 
 	 */
 	public void execute() {
-		baseZoom = baseZoom + zoomFactor;
+		baseZoom = baseZoom * zoomFactor;
 		laPerspective.setZoom(baseZoom);
 	}
 	
