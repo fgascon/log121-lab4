@@ -79,9 +79,10 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void translate(int perspectiveIndex) {
+	public void translate(int perspectiveIndex, Coordonnee uneCoordonnee) {
 		Perspective perspective = perspectives.get(perspectiveIndex);
-		TranslationCommand translation = new TranslationCommand(perspective);
+		Coordonnee coordonnee = uneCoordonnee;
+		TranslationCommand translation = new TranslationCommand(perspective,coordonnee);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(translation);
 	}
@@ -89,9 +90,9 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void zoom(int perspectiveIndex) {
+	public void zoom(int perspectiveIndex, float unZoom) {
 		Perspective perspective = perspectives.get(perspectiveIndex);
-		ZoomCommand zoom = new ZoomCommand(perspective);
+		ZoomCommand zoom = new ZoomCommand(perspective,unZoom);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(zoom);
 	}

@@ -30,7 +30,7 @@ public class Perspective extends Observable {
 		return zoom;
 	}
 	
-	public void doZoom(float unZoom){
+	public void setZoom(float unZoom){
 		zoom = unZoom;
 	}
 	
