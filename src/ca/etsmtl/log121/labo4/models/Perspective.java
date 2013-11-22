@@ -10,20 +10,15 @@ import ca.etsmtl.log121.labo4.Coordonnee;
  */
 public class Perspective extends Observable {
 	
-	/**
-	 * 
-	 */
-	private Coordonnee coordonnee;
+	private final Coordonnee coordonnee ;
 	
-	/**
-	 * 
-	 */
-	private int zoom;
 	
-	/**
-	 * 
-	 */
+	private float zoom;
+	
+
 	public Perspective() {
+		coordonnee = new Coordonnee(0,0);
+		zoom = 1;
 		
 	}
 	
@@ -31,8 +26,17 @@ public class Perspective extends Observable {
 	 * 
 	 * @return
 	 */
-	public int getZoom() {
+	public float getZoom() {
 		return zoom;
+	}
+	
+	public void doZoom(float unZoom){
+		zoom = unZoom;
+	}
+	
+	public void setPosition(int posX, int posY){
+		coordonnee.setX(posX);
+		coordonnee.setY(posY);
 	}
 	
 	/**

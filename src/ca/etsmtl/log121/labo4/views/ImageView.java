@@ -28,10 +28,9 @@ public class ImageView extends JPanel implements Observer {
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 	
-	public ImageView(int unePosX) {
-		int posX = unePosX;
-		this.setLayout(null);
-		this.setBounds(posX, FRAME_POSY, FRAME_WIDTH, FRAME_HEIGHT);
+	public ImageView(int unePosX, int unePosY){
+		this.setLayout(new BorderLayout());
+		this.setBounds(unePosX, unePosY, FRAME_WIDTH, FRAME_HEIGHT);
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 	

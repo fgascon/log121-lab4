@@ -33,26 +33,26 @@ public class MenuFenetre extends JMenuBar {
 	private final int BOUCLE_INFINIE = -1;
 	private final int OBTENIR_FORMES = 10;
 	private static final long serialVersionUID = 1536336192561843187L;
-	private static final int MENU_DESSIN_ARRETER_TOUCHE_MASK = ActionEvent.CTRL_MASK; // NOPMD by Gabriel on 13-10-17 19:14
-	private static final char MENU_DESSIN_ARRETER_TOUCHE_RACC = KeyEvent.VK_A; // NOPMD by Gabriel on 13-10-17 19:16
-	private static final int MENU_DESSIN_DEMARRER_TOUCHE_MASK = ActionEvent.CTRL_MASK; // NOPMD by Gabriel on 13-10-17 19:15
-	private static final char MENU_DESSIN_DEMARRER_TOUCHE_RACC = KeyEvent.VK_D; // NOPMD by Gabriel on 13-10-17 19:15
-	private static final int MENU_FICHIER_QUITTER_TOUCHE_MASK = ActionEvent.CTRL_MASK; // NOPMD by Gabriel on 13-10-17 19:15
-	private static final char MENU_FICHIER_QUITTER_TOUCHE_RACC = KeyEvent.VK_Z; // NOPMD by Gabriel on 13-10-17 19:15
-	private static final int MENU_FICHIER_FORMES_TOUCHE_MASK = ActionEvent.CTRL_MASK; // NOPMD by Gabriel on 13-10-17 19:15
-	private static final char MENU_FICHIER_FORMES_TOUCHE_RACC = KeyEvent.VK_Y; // NOPMD by Gabriel on 13-10-17 19:15
-	private static final String MENU_FICHIER_TITRE = "app.frame.menus.file.title", // NOPMD by Gabriel on 13-10-17 19:14
-			MENU_FICHIER_QUITTER = "app.frame.menus.file.exit", // NOPMD by Gabriel on 13-10-17 19:15
-			MENU_DESSIN_TITRE = "app.frame.menus.draw.title",
-			MENU_DESSIN_DEMARRER = "app.frame.menus.draw.start", // NOPMD by Gabriel on 13-10-17 19:15
-			MENU_DESSIN_ARRETER = "app.frame.menus.draw.stop", // NOPMD by Gabriel on 13-10-17 19:15
-			MENU_FICHIER_FORMES = "app.frame.menus.file.formes", // NOPMD by Gabriel on 13-10-17 19:16
+	private static final int MENU_FICHIER_SAUVEGARDER_TOUCHE_MASK = ActionEvent.CTRL_MASK; // NOPMD by Gabriel on 13-10-17 19:14
+	private static final char MENU_FICHIER_SAUVEGARDER_TOUCHE_RACC = KeyEvent.VK_A; // NOPMD by Gabriel on 13-10-17 19:16
+	private static final int MENU_FICHIER_IMPORTER_TOUCHE_MASK = ActionEvent.CTRL_MASK; // NOPMD by Gabriel on 13-10-17 19:15
+	private static final char MENU_FICHIER_IMPORTER_TOUCHE_RACC = KeyEvent.VK_D; // NOPMD by Gabriel on 13-10-17 19:15
+	private static final int MENU_EDITER_DEFAIRE_TOUCHE_MASK = ActionEvent.CTRL_MASK; // NOPMD by Gabriel on 13-10-17 19:15
+	private static final char MENU_EDITER_DEFAIRE_TOUCHE_RACC = KeyEvent.VK_Z; // NOPMD by Gabriel on 13-10-17 19:15
+	private static final int MENU_EDITER_REFAIRE_TOUCHE_MASK = ActionEvent.CTRL_MASK; // NOPMD by Gabriel on 13-10-17 19:15
+	private static final char MENU_EDITER_REFAIRE_TOUCHE_RACC = KeyEvent.VK_Y; // NOPMD by Gabriel on 13-10-17 19:15
+	private static final String MENU_EDITER_TITRE = "app.frame.menus.edit.title", // NOPMD by Gabriel on 13-10-17 19:14
+			MENU_EDITER_DEFAIRE = "app.frame.menus.edit.defaire", // NOPMD by Gabriel on 13-10-17 19:15
+			MENU_FICHIER_TITRE = "app.frame.menus.file.title",
+			MENU_FICHIER_DEMARRER = "app.frame.menus.file.import", // NOPMD by Gabriel on 13-10-17 19:15
+			MENU_FICHIER_ARRETER = "app.frame.menus.file.save", // NOPMD by Gabriel on 13-10-17 19:15
+			MENU_EDITER_REFAIRE = "app.frame.menus.edit.refaire", // NOPMD by Gabriel on 13-10-17 19:16
 			MENU_AIDE_TITRE = "app.frame.menus.help.title",
 			MENU_AIDE_PROPOS = "app.frame.menus.help.about";
 	
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about"; // NOPMD by Gabriel on 13-10-17 19:15
 
-	private JMenuItem arreterMenuItem, demarrerMenuItem, obtenirformesMenuItem; // NOPMD by Gabriel on 13-10-17 19:15
+	private JMenuItem sauvegarderMenuItem, importerMenuItem, refaireMenuItem; // NOPMD by Gabriel on 13-10-17 19:15
 	private static final int DELAI_QUITTER_MSEC = 200; // NOPMD by Gabriel on 13-10-17 19:16
 
 
@@ -67,25 +67,25 @@ public class MenuFenetre extends JMenuBar {
 	}
 
 	/**
-	 * Créer le menu "Draw".
+	 * Créer le menu "Fichier".
 	 */
 
 	protected void addMenuFichier() {
-		JMenu menu = creerMenu(MENU_DESSIN_TITRE, new String[] {
-				MENU_DESSIN_DEMARRER, MENU_DESSIN_ARRETER});
+		JMenu menu = creerMenu(MENU_FICHIER_TITRE, new String[] {
+				MENU_FICHIER_DEMARRER, MENU_FICHIER_ARRETER});
 
-		demarrerMenuItem = menu.getItem(0);
-		demarrerMenuItem.addActionListener(new ActionListener() {
+		importerMenuItem = menu.getItem(0);
+		importerMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//rafraichirMenus();
 			}
 		});
-		demarrerMenuItem.setAccelerator(KeyStroke.getKeyStroke(
-				MENU_DESSIN_DEMARRER_TOUCHE_RACC,
-				MENU_DESSIN_DEMARRER_TOUCHE_MASK));
+		importerMenuItem.setAccelerator(KeyStroke.getKeyStroke(
+				MENU_FICHIER_IMPORTER_TOUCHE_RACC,
+				MENU_FICHIER_IMPORTER_TOUCHE_MASK));
 
-		arreterMenuItem = menu.getItem(1);
-		arreterMenuItem.addActionListener(new ActionListener() {
+		sauvegarderMenuItem = menu.getItem(1);
+		sauvegarderMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//rafraichirMenus();
 			}
@@ -93,18 +93,18 @@ public class MenuFenetre extends JMenuBar {
 		
 		
 
-		arreterMenuItem.setAccelerator(KeyStroke.getKeyStroke(
-				MENU_DESSIN_ARRETER_TOUCHE_RACC,
-				MENU_DESSIN_ARRETER_TOUCHE_MASK));
+		sauvegarderMenuItem.setAccelerator(KeyStroke.getKeyStroke(
+				MENU_FICHIER_SAUVEGARDER_TOUCHE_RACC,
+				MENU_FICHIER_SAUVEGARDER_TOUCHE_MASK));
 		add(menu);
 	}
 
 	/**
-	 * Créer le menu "File".
+	 * Créer le menu "Edit".
 	 */
 	protected void addMenuEdit() {
-		JMenu menu = creerMenu(MENU_FICHIER_TITRE,
-				new String[] { MENU_FICHIER_QUITTER, MENU_FICHIER_FORMES });
+		JMenu menu = creerMenu(MENU_EDITER_TITRE,
+				new String[] { MENU_EDITER_DEFAIRE, MENU_EDITER_REFAIRE });
 		menu.getItem(0).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -116,19 +116,19 @@ public class MenuFenetre extends JMenuBar {
 			}
 		});
 		menu.getItem(0).setAccelerator(
-				KeyStroke.getKeyStroke(MENU_FICHIER_QUITTER_TOUCHE_RACC,
-						MENU_FICHIER_QUITTER_TOUCHE_MASK));
+				KeyStroke.getKeyStroke(MENU_EDITER_DEFAIRE_TOUCHE_RACC,
+						MENU_EDITER_DEFAIRE_TOUCHE_MASK));
 		
 		
-		obtenirformesMenuItem = menu.getItem(1);
-		obtenirformesMenuItem.addActionListener(new ActionListener() {
+		refaireMenuItem = menu.getItem(1);
+		refaireMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//rafraichirMenus();
 			}
 		});
 		menu.getItem(1).setAccelerator(KeyStroke.getKeyStroke(
-				MENU_FICHIER_FORMES_TOUCHE_RACC,
-				MENU_FICHIER_FORMES_TOUCHE_MASK));
+				MENU_EDITER_REFAIRE_TOUCHE_RACC,
+				MENU_EDITER_REFAIRE_TOUCHE_MASK));
 		add(menu);
 	}
 	/*
