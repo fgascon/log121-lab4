@@ -73,5 +73,24 @@ public class Perspective extends Observable implements Model {
 			coordonnee.setY(savedYPosition);
 			zoom = savedZoom;
 		}
+		
+		public String serialize() {
+			return Integer.toHexString(savedXPosition)
+					.concat("|")
+					.concat(Integer.toHexString(savedYPosition))
+					.concat("|")
+					.concat(Float.toHexString(zoom));
+		}
+		
+		public void unserialize(String state) throws Exception {
+			String[] stateArray = state.split("|");
+			if(stateArray.length != 3) {
+				throw new Exception("Can't serialize Perspective: invalid state.");
+			} else {
+				savedXPosition = Integer.parseInt(stateArray[0]);
+				savedYPosition = Integer.parseInt(stateArray[1]);
+				savedZoom = Integer.parseInt(stateArray[2]);
+			}
+		}
 	}
 }

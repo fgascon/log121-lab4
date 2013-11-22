@@ -69,5 +69,13 @@ public class ImageModel extends Observable implements Model {
 		public void restore() {
 			image = savedImage;
 		}
+		
+		public String serialize() {
+			return "";
+		}
+		
+		public void unserialize(String state) throws Exception {
+			
+		}
 	}
 }
