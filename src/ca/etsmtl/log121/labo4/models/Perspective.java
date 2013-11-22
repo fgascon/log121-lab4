@@ -1,12 +1,14 @@
 package ca.etsmtl.log121.labo4.models;
 
+import java.util.Observable;
+
 import ca.etsmtl.log121.labo4.Coordonnee;
 
 
 /**
  * 
  */
-public class Perspective {
+public class Perspective extends Observable {
 	
 	/**
 	 * 
