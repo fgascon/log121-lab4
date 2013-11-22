@@ -4,7 +4,6 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Observable;
 
 import javax.imageio.ImageIO;
@@ -14,11 +13,6 @@ import javax.imageio.ImageIO;
  * 
  */
 public class ImageModel extends Observable {
-	
-	/**
-	 * 
-	 */
-	private final ArrayList<Perspective> perspective = new ArrayList<Perspective>();
 	
 	/**
 	 * 
@@ -40,6 +34,8 @@ public class ImageModel extends Observable {
 	public void load(String path) throws IOException {
 		File file = new File(path);
 		image = ImageIO.read(file);
+		this.setChanged();
+		this.notifyObservers(image);
 	}
 	
 	/**
