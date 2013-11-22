@@ -16,14 +16,18 @@ public class Controller
 	/**
 	 * 
 	 */
-	private final ImageModel imageModel = new ImageModel();
+	private final ImageModel imageModel;
 	
+	/**
+	 * 
+	 */
 	private final ArrayList<Perspective> perspectives;
 	
 	/**
 	 * 
 	 */
 	public Controller(int nbPerspective){
+		imageModel = new ImageModel();
 		perspectives = new ArrayList<Perspective>(nbPerspective);
 		for(int i=0; i<nbPerspective; i++) {
 			perspectives.add(new Perspective());
