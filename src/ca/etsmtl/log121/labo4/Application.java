@@ -1,50 +1,25 @@
 package ca.etsmtl.log121.labo4;
 
-
-
-
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ * 
  */
-
 public class Application
 {
 	
+	/**
+	 * 
+	 * @param args arguments reçu, aucun argument n'est attendu
+	 */
 	public static void main(String[] args) {
 		new Application();
 
 	}
 	
-	
+	/**
+	 * Constructeur de l'application. Affiche la fenêtre principale.
+	 */
 	public Application(){
 		FenetrePrincipale uneFenetre = new FenetrePrincipale();
-		uneFenetre.show();
-		
+		uneFenetre.setVisible(true);
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void initialiserFenetre() {
-		// TODO : to implement	
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void operation() {
-		// TODO : to implement	
-	}
-	
 }
-
