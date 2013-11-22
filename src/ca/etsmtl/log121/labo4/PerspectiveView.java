@@ -1,5 +1,7 @@
 package ca.etsmtl.log121.labo4;
 
+import java.util.Observable;
+
 
 /**
  * <!-- begin-user-doc -->

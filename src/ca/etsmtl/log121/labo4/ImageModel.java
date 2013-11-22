@@ -1,6 +1,7 @@
 package ca.etsmtl.log121.labo4;
+
 import java.util.Set;
-import java.util.HashSet;
+import java.util.Observable;
 
 
 /**
@@ -9,7 +10,7 @@ import java.util.HashSet;
  * @generated
  */
 
-public class ImageModel implements Observable
+public class ImageModel extends Observable
 {
 	/**
 	 * <!-- begin-user-doc -->
@@ -19,15 +20,6 @@ public class ImageModel implements Observable
 	 */
 	
 	private Set<Perspective> perspective;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public Set<Perspective> perspective;
 	
 	/**
 	 * <!-- begin-user-doc -->
