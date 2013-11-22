@@ -10,8 +10,6 @@ import ca.etsmtl.log121.labo4.models.ImageModel;
 
 import java.awt.*;
 
-
-
 public class ImageView extends JPanel implements Observer {
 	
 	private static final int FRAME_WIDTH = 350;

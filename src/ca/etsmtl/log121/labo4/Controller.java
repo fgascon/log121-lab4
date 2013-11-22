@@ -61,19 +61,19 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void copy() {
-		CopyCommand copy = new CopyCommand();
-		CommandManager commandManager = CommandManager.getInstance();
-		commandManager.execute(copy);
+	public void copy(int perspectiveIndex) {
+		Perspective perspective = perspectives.get(perspectiveIndex);
+		CopyCommand copy = new CopyCommand(perspective);
+		CommandManager.getInstance().execute(copy);
 	}
 	
 	/**
 	 * 
 	 */
-	public void paste() {
-		PasteCommand paste = new PasteCommand();
-		CommandManager commandManager = CommandManager.getInstance();
-		commandManager.execute(paste);
+	public void paste(int perspectiveIndex) {
+		Perspective perspective = perspectives.get(perspectiveIndex);
+		PasteCommand paste = new PasteCommand(perspective);
+		CommandManager.getInstance().execute(paste);
 	}
 	
 	/**

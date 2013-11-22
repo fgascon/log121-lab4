@@ -9,10 +9,11 @@ import java.util.Observable;
 import javax.imageio.ImageIO;
 
 
+
 /**
  * 
  */
-public class ImageModel extends Observable {
+public class ImageModel extends Observable implements Model {
 	
 	/**
 	 * 
@@ -44,5 +45,29 @@ public class ImageModel extends Observable {
 	 */
 	public Image getImage() {
 		return image;
+	}
+	
+	public ModelState saveState() {
+		return new ImageModelState();
+	}
+	
+	public void restoreState(ModelState state) {
+		if(state instanceof ImageModelState) {
+			ImageModelState imageModelState = (ImageModelState) state;
+			imageModelState.restore();
+		}
+	}
+	
+	private class ImageModelState implements ModelState {
+		
+		public Image savedImage;
+		
+		public ImageModelState() {
+			savedImage = image;
+		}
+		
+		public void restore() {
+			image = savedImage;
+		}
 	}
 }
