@@ -8,13 +8,14 @@ import ca.etsmtl.log121.labo4.models.Perspective;
  */
 public class ZoomCommand implements Command {
 	
-	float baseZoom;
-	float zoomFactor;
-	Perspective laPerspective;
+	private final float baseZoom;
+	private final float zoomFactor;
+	private final Perspective laPerspective;
 	
 	/**
-	 * @param perspective 
-	 * 
+	 * Crée un zoom à appliquer sur une perspective
+	 * @param perspective perspective sur laquelle appliquer le zoom
+	 * @param unZoom facteur de zoom à appliquer
 	 */
 	public ZoomCommand(Perspective perspective, float unZoom) {
 		laPerspective = perspective;
@@ -23,18 +24,16 @@ public class ZoomCommand implements Command {
 	}
 	
 	/**
-	 * 
+	 * Applique le zoom sur la perspective.
 	 */
 	public void execute() {
-		baseZoom = baseZoom * zoomFactor;
-		laPerspective.setZoom(baseZoom);
+		laPerspective.setZoom(baseZoom * zoomFactor);
 	}
 	
 	/**
-	 * 
+	 * Restore le zoom précédent de la perspective.
 	 */
 	public void unexecute() {
-		baseZoom = baseZoom / zoomFactor;
 		laPerspective.setZoom(baseZoom);
 	}
 }
