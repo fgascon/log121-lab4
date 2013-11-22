@@ -50,4 +50,8 @@ public class Coordonnee
 	public void setY(int value) {
 		positionX = value;
 	}
+	
+	public Coordonnee copy() {
+		return new Coordonnee(positionX, positionY);
+	}
 }
