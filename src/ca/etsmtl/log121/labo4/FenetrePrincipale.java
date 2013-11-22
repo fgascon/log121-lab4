@@ -1,5 +1,7 @@
 package ca.etsmtl.log121.labo4;
 import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -18,26 +20,17 @@ public class FenetrePrincipale extends JFrame
 {
 	private final int DEFAULT_WIDTH = 750;
 	private final int DEFAULT_HEIGHT = 500;
+	private ArrayList<ImageView> desViews = new ArrayList<ImageView>();
 	
 	public Set<ImageView> imageView;
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
 	
-	public Application application;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
 	public FenetrePrincipale(){
-		this.setLayout(new BorderLayout());
+		this.setLayout(null);
 		this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		this.creerView();
+		this.creerView(375);
+		this.creerView(328,382,75,75);
 	}
 
 	/**
@@ -46,21 +39,23 @@ public class FenetrePrincipale extends JFrame
 	 * @generated
 	 * @ordered
 	 */
-	
-	public void creerView() {
-		// TODO : to implement	
+
+	private void creerView() {
+		ImageView unFrame = new ImageView();
+		this.add(unFrame);		
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void operation() {
-		// TODO : to implement	
+	private void creerView(int posX) {
+		ImageView unFrame = new ImageView(posX);
+		this.add(unFrame);		
 	}
+	
+	private void creerView(int posX, int posY, int width,int height) {
+		ImageView unFrame = new ImageView(posX,posY,width,height);
+		this.add(unFrame);		
+	}
+	
+	
 	
 }
 

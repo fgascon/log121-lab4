@@ -17,13 +17,7 @@ public class Application
 
 	}
 	
-	public FenetrePrincipale fenetrePrincipale;
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
 	public Application(){
 		FenetrePrincipale uneFenetre = new FenetrePrincipale();
 		uneFenetre.show();
