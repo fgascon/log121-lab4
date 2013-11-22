@@ -28,11 +28,12 @@ public class FenetrePrincipale extends JFrame
 	
 	
 	public FenetrePrincipale(){
+		this.setTitle("Default Frame");
 		this.setLayout(null);
 		this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 
 		this.creerView();
-		this.creerView(375);
+		this.creerView(375,25);
 		this.creerView(328,382,75,75);
 
 		MenuFenetre menu = new MenuFenetre();
@@ -52,8 +53,8 @@ public class FenetrePrincipale extends JFrame
 		this.add(unFrame);		
 	}
 	
-	private void creerView(int posX) {
-		ImageView unFrame = new ImageView(posX);
+	private void creerView(int posX, int posY) {
+		ImageView unFrame = new ImageView(posX, posY);
 		this.add(unFrame);		
 	}
 	
