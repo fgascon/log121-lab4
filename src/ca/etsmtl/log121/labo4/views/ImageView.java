@@ -14,24 +14,20 @@ import java.awt.*;
 
 public class ImageView extends JPanel implements Observer {
 	
-	private final int FRAME_WIDTH = 350;
-	private final int FRAME_HEIGHT = 350;
+	private static final int FRAME_WIDTH = 350;
+	private static final int FRAME_HEIGHT = 350;
 	
-	private final int FRAME_POSX = 10;
-	private final int FRAME_POSY = 25;
+	private static final int FRAME_POSX = 10;
+	private static final int FRAME_POSY = 25;
 	
 	protected Image image;
 	
 	public ImageView() {
-		this.setLayout(null);
-		this.setBounds(FRAME_POSX, FRAME_POSY, FRAME_WIDTH, FRAME_HEIGHT);
-		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this(FRAME_POSX, FRAME_POSY);
 	}
 	
 	public ImageView(int unePosX, int unePosY){
-		this.setLayout(new BorderLayout());
-		this.setBounds(unePosX, unePosY, FRAME_WIDTH, FRAME_HEIGHT);
-		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this(unePosX, unePosY, FRAME_WIDTH, FRAME_HEIGHT);
 	}
 	
 	public ImageView(int unePosX, int unePosY, int uneWidth, int uneHeight) {

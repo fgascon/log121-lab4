@@ -40,14 +40,7 @@ public class FenetrePrincipale extends JFrame
 		this.setLayout(new BorderLayout());
 		this.add(menu, BorderLayout.NORTH);
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-
+	
 	private void creerView() {
 		ImageView unFrame = new ImageView();
 		this.add(unFrame);		
