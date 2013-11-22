@@ -75,9 +75,10 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void translate(int perspectiveIndex) {
+	public void translate(int perspectiveIndex, Coordonnee uneCoordonnee) {
 		Perspective perspective = perspectives.get(perspectiveIndex);
-		TranslationCommand translation = new TranslationCommand(perspective);
+		Coordonnee coordonnee = uneCoordonnee;
+		TranslationCommand translation = new TranslationCommand(perspective,coordonnee);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(translation);
 	}
