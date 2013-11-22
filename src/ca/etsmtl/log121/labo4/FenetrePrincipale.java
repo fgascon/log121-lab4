@@ -30,15 +30,14 @@ public class FenetrePrincipale extends JFrame
 	public FenetrePrincipale(){
 		this.setLayout(null);
 		this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-<<<<<<< HEAD
+
 		this.creerView();
 		this.creerView(375);
 		this.creerView(328,382,75,75);
-=======
+
 		MenuFenetre menu = new MenuFenetre();
 		this.setLayout(new BorderLayout());
 		this.add(menu, BorderLayout.NORTH);
->>>>>>> 16c3e78410b7d7e6ccd13d296bc5420bfd5cfd99
 	}
 
 	/**
