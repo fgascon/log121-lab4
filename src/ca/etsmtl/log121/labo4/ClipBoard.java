@@ -1,4 +1,4 @@
-package ca.etsmtl.log121.labo4.commands;
+package ca.etsmtl.log121.labo4;
 
 import ca.etsmtl.log121.labo4.models.ModelState;
 

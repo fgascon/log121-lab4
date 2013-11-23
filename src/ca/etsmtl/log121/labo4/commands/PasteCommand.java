@@ -1,5 +1,6 @@
 package ca.etsmtl.log121.labo4.commands;
 
+import ca.etsmtl.log121.labo4.ClipBoard;
 import ca.etsmtl.log121.labo4.models.Model;
 import ca.etsmtl.log121.labo4.models.ModelState;
 
