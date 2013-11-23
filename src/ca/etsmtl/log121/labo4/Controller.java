@@ -2,6 +2,7 @@ package ca.etsmtl.log121.labo4;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Observer;
 
 import ca.etsmtl.log121.labo4.commands.*;
 import ca.etsmtl.log121.labo4.models.*;
@@ -32,6 +33,14 @@ public class Controller
 		for(int i=0; i<nbPerspective; i++) {
 			perspectives.add(new Perspective());
 		}
+	}
+	
+	public void observeImage(Observer observer) {
+		imageModel.addObserver(observer);
+	}
+	
+	public void observePerspective(int perspectiveIndex, Observer observer) {
+		perspectives.get(0).addObserver(observer);
 	}
 	
 	public void loadImage(String path) throws IOException {

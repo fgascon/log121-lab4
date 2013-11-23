@@ -12,6 +12,8 @@ import java.awt.*;
 
 public class ImageView extends JPanel implements Observer {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private static final int FRAME_WIDTH = 350;
 	private static final int FRAME_HEIGHT = 350;
 	

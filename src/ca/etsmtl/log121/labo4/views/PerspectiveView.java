@@ -18,6 +18,8 @@ import ca.etsmtl.log121.labo4.models.Perspective;
 public class PerspectiveView extends ImageView
 {
 	
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * 
 	 */
@@ -28,11 +30,8 @@ public class PerspectiveView extends ImageView
 	 */
 	private float zoom;
 	
-	/**
-	 * 
-	 */
-	public PerspectiveView(){
-		super();
+	public PerspectiveView(int unePosX, int unePosY, int uneWidth, int uneHeight) {
+		super(unePosX, unePosY, uneWidth, uneHeight);
 	}
 	
 	/**

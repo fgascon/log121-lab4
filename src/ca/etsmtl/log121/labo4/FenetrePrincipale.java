@@ -1,62 +1,44 @@
 package ca.etsmtl.log121.labo4;
+
 import java.awt.BorderLayout;
-import java.awt.Graphics;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
-
-//import lab1.MenuFenetre;
-
-import ca.etsmtl.log121.labo4.views.ImageView;
-
+import javax.swing.JPanel;
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ * 
  */
-
 public class FenetrePrincipale extends JFrame
 {
-	private final int DEFAULT_WIDTH = 750;
-	private final int DEFAULT_HEIGHT = 500;
-	private ArrayList<ImageView> desViews = new ArrayList<ImageView>();
 	
-	public Set<ImageView> imageView;
+	private static final long serialVersionUID = 1L;
 	
+	private static final int DEFAULT_WIDTH = 750;
+	private static final int DEFAULT_HEIGHT = 500;
+	
+	private MenuFenetre menu;
+	private JPanel viewsContainer;
 	
 	public FenetrePrincipale(){
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Default Frame");
-		this.setLayout(null);
 		this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-
-		this.creerView();
-		this.creerView(375,25);
-		this.creerView(328,382,75,75);
-
-		MenuFenetre menu = new MenuFenetre();
 		this.setLayout(new BorderLayout());
+		
+		menu = new MenuFenetre();
 		this.add(menu, BorderLayout.NORTH);
+		
+		viewsContainer = new JPanel();
+		viewsContainer.setLayout(null);
+		this.add(viewsContainer, BorderLayout.CENTER);
 	}
 	
-	private void creerView() {
-		ImageView unFrame = new ImageView();
-		this.add(unFrame);		
+	public MenuFenetre getMenu() {
+		return menu;
 	}
 	
-	private void creerView(int posX, int posY) {
-		ImageView unFrame = new ImageView(posX, posY);
-		this.add(unFrame);		
+	public void addToContainer(JComponent view) {
+		viewsContainer.add(view);
 	}
-	
-	private void creerView(int posX, int posY, int width,int height) {
-		ImageView unFrame = new ImageView(posX,posY,width,height);
-		this.add(unFrame);		
-	}
-	
-	
-	
 }
-
