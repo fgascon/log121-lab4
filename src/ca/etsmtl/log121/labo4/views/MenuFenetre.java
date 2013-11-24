@@ -1,4 +1,4 @@
-package ca.etsmtl.log121.labo4;
+package ca.etsmtl.log121.labo4.views;
 /******************************************************
 Cours:  LOG121
 Projet: Squelette du laboratoire #1
@@ -24,6 +24,8 @@ import javax.swing.KeyStroke;
 import javax.swing.ButtonGroup;
 
 import javax.swing.JRadioButtonMenuItem;
+
+import ca.etsmtl.log121.labo4.LangueConfig;
 
 /**
  * Crée le menu de la fenêtre de l'application.
