@@ -32,8 +32,6 @@ import ca.etsmtl.log121.labo4.LangueConfig;
  */
 public class MenuFenetre extends JMenuBar {
 	
-	private final int BOUCLE_INFINIE = -1;
-	private final int OBTENIR_FORMES = 10;
 	private static final long serialVersionUID = 1536336192561843187L;
 	private static final int MENU_FICHIER_SAUVEGARDER_TOUCHE_MASK = ActionEvent.CTRL_MASK; // NOPMD by Gabriel on 13-10-17 19:14
 	private static final char MENU_FICHIER_SAUVEGARDER_TOUCHE_RACC = KeyEvent.VK_A; // NOPMD by Gabriel on 13-10-17 19:16

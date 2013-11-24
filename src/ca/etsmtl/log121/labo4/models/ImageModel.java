@@ -23,7 +23,13 @@ public class ImageModel extends Observable implements Model {
 	/**
 	 * 
 	 */
+	private String imagePath;
+	
+	/**
+	 * 
+	 */
 	public ImageModel(){
+		imagePath = null;
 		image = new BufferedImage(256, 256, BufferedImage.TYPE_INT_RGB);
 	}
 	
@@ -33,10 +39,11 @@ public class ImageModel extends Observable implements Model {
 	 * @throws IOException erreur durant le chargement de l'image
 	 */
 	public void load(String path) throws IOException {
+		imagePath = path;
 		File file = new File(path);
 		image = ImageIO.read(file);
-		this.setChanged();
-		this.notifyObservers(image);
+		setChanged();
+		notifyObservers();
 	}
 	
 	/**
@@ -55,27 +62,32 @@ public class ImageModel extends Observable implements Model {
 		if(state instanceof ImageModelState) {
 			ImageModelState imageModelState = (ImageModelState) state;
 			imageModelState.restore();
+			setChanged();
+			notifyObservers();
 		}
+	}
+	
+	public String serialize() {
+		return imagePath;
+	}
+	
+	public void unserialize(String state) throws Exception {
+		this.load(state);
 	}
 	
 	private class ImageModelState implements ModelState {
 		
+		public String savedImagePath;
 		public Image savedImage;
 		
 		public ImageModelState() {
+			savedImagePath = imagePath;
 			savedImage = image;
 		}
 		
 		public void restore() {
+			imagePath = savedImagePath;
 			image = savedImage;
-		}
-		
-		public String serialize() {
-			return "";
-		}
-		
-		public void unserialize(String state) throws Exception {
-			
 		}
 	}
 }

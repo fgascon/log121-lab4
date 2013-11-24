@@ -5,4 +5,8 @@ public interface Model {
 	public ModelState saveState();
 	
 	public void restoreState(ModelState state);
+	
+	public String serialize();
+	
+	public void unserialize(String state) throws Exception;
 }

@@ -12,23 +12,9 @@ import java.awt.*;
 
 public class ImageView extends JPanel implements Observer {
 	
-	private static final long serialVersionUID = 1L;
-	
-	private static final int FRAME_WIDTH = 350;
-	private static final int FRAME_HEIGHT = 350;
-	
-	private static final int FRAME_POSX = 10;
-	private static final int FRAME_POSY = 25;
+	private static final long serialVersionUID = 10L;
 	
 	protected Image image;
-	
-	public ImageView() {
-		this(FRAME_POSX, FRAME_POSY);
-	}
-	
-	public ImageView(int unePosX, int unePosY){
-		this(unePosX, unePosY, FRAME_WIDTH, FRAME_HEIGHT);
-	}
 	
 	public ImageView(int unePosX, int unePosY, int uneWidth, int uneHeight) {
 		int posX = unePosX;

@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class FenetrePrincipale extends JFrame
 {
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 11L;
 	
 	private static final int DEFAULT_WIDTH = 750;
 	private static final int DEFAULT_HEIGHT = 500;

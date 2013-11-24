@@ -30,11 +30,15 @@ public class Perspective extends Observable implements Model {
 	
 	public void setZoom(float unZoom){
 		zoom = unZoom;
+		setChanged();
+		notifyObservers();
 	}
 	
 	public void setPosition(int posX, int posY){
 		coordonnee.setX(posX);
 		coordonnee.setY(posY);
+		setChanged();
+		notifyObservers();
 	}
 	
 	/**
@@ -53,6 +57,27 @@ public class Perspective extends Observable implements Model {
 		if(state instanceof PerspectiveModelState) {
 			PerspectiveModelState perspectiveModelState = (PerspectiveModelState) state;
 			perspectiveModelState.restore();
+			setChanged();
+			notifyObservers();
+		}
+	}
+	
+	public String serialize() {
+		return Integer.toHexString(coordonnee.getX())
+				.concat("|")
+				.concat(Integer.toHexString(coordonnee.getY()))
+				.concat("|")
+				.concat(Float.toHexString(zoom));
+	}
+	
+	public void unserialize(String state) throws Exception {
+		String[] stateArray = state.split("|");
+		if(stateArray.length != 3) {
+			throw new Exception("Can't serialize Perspective: invalid state.");
+		} else {
+			coordonnee.setX(Integer.parseInt(stateArray[0]));
+			coordonnee.setY(Integer.parseInt(stateArray[1]));
+			zoom = Float.parseFloat(stateArray[2]);
 		}
 	}
 	
@@ -72,25 +97,6 @@ public class Perspective extends Observable implements Model {
 			coordonnee.setX(savedXPosition);
 			coordonnee.setY(savedYPosition);
 			zoom = savedZoom;
-		}
-		
-		public String serialize() {
-			return Integer.toHexString(savedXPosition)
-					.concat("|")
-					.concat(Integer.toHexString(savedYPosition))
-					.concat("|")
-					.concat(Float.toHexString(zoom));
-		}
-		
-		public void unserialize(String state) throws Exception {
-			String[] stateArray = state.split("|");
-			if(stateArray.length != 3) {
-				throw new Exception("Can't serialize Perspective: invalid state.");
-			} else {
-				savedXPosition = Integer.parseInt(stateArray[0]);
-				savedYPosition = Integer.parseInt(stateArray[1]);
-				savedZoom = Integer.parseInt(stateArray[2]);
-			}
 		}
 	}
 }

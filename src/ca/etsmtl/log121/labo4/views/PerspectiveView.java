@@ -18,7 +18,7 @@ import ca.etsmtl.log121.labo4.models.Perspective;
 public class PerspectiveView extends ImageView
 {
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 13L;
 
 	/**
 	 * 

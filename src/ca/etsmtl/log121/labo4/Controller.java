@@ -1,6 +1,7 @@
 package ca.etsmtl.log121.labo4;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Observer;
 
@@ -13,6 +14,8 @@ import ca.etsmtl.log121.labo4.models.*;
  */
 public class Controller
 {
+	
+	private final static Charset ENCODING = Charset.defaultCharset();
 	
 	/**
 	 * 
@@ -104,5 +107,33 @@ public class Controller
 		ZoomCommand zoom = new ZoomCommand(perspective, unZoom);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(zoom);
+	}
+	
+	/**
+	 * 
+	 * @throws IOException 
+	 */
+	public void save(String path) throws IOException {
+		String content = imageModel.serialize();
+		for(int i=0; i<perspectives.size(); i++) {
+			content += ";" + perspectives.get(i).serialize();
+		}
+		FileAccess.writeFile(path, content);
+	}
+	
+	/**
+	 * 
+	 * @throws Exception 
+	 */
+	public void open(String path) throws Exception {
+		String content = FileAccess.readFile(path);
+		String[] contentParts = content.split(";");
+		if(contentParts.length != 3) {
+			throw new Exception("Invalid file format");
+		}
+		imageModel.unserialize(contentParts[0]);
+		for(int i=0; i<2; i++) {
+			perspectives.get(i).unserialize(contentParts[i+1]);
+		}
 	}
 }
