@@ -36,8 +36,8 @@ public class Application
 	 * Constructeur de l'application. Affiche la fenêtre principale.
 	 */
 	public Application(){
-		fenetrePrincipale = new FenetrePrincipale();
 		controller = new Controller(2);
+		fenetrePrincipale = new FenetrePrincipale(controller);
 		
 		this.creerPerspectiveView(0, 10, 10, 350, 350);
 		this.creerPerspectiveView(1, 375, 10, 350, 350);

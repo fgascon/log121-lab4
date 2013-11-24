@@ -40,8 +40,12 @@ public class ImageModel extends Observable implements Model {
 	 */
 	public void load(String path) throws IOException {
 		imagePath = path;
-		File file = new File(path);
-		image = ImageIO.read(file);
+		if(imagePath == null) {
+			image = new BufferedImage(256, 256, BufferedImage.TYPE_INT_RGB);
+		} else {
+			File file = new File(path);
+			image = ImageIO.read(file);
+		}
 		setChanged();
 		notifyObservers();
 	}
@@ -72,7 +76,10 @@ public class ImageModel extends Observable implements Model {
 	}
 	
 	public void unserialize(String state) throws Exception {
-		this.load(state);
+		if(state.equals("null")) {
+			state = null;
+		}
+		load(state);
 	}
 	
 	private class ImageModelState implements ModelState {

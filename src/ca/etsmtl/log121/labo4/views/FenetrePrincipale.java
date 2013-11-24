@@ -6,6 +6,8 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ca.etsmtl.log121.labo4.Controller;
+
 /**
  * 
  */
@@ -20,22 +22,18 @@ public class FenetrePrincipale extends JFrame
 	private MenuFenetre menu;
 	private JPanel viewsContainer;
 	
-	public FenetrePrincipale(){
+	public FenetrePrincipale(Controller controller){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Default Frame");
 		this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		this.setLayout(new BorderLayout());
 		
-		menu = new MenuFenetre();
+		menu = new MenuFenetre(controller);
 		this.add(menu, BorderLayout.NORTH);
 		
 		viewsContainer = new JPanel();
 		viewsContainer.setLayout(null);
 		this.add(viewsContainer, BorderLayout.CENTER);
-	}
-	
-	public MenuFenetre getMenu() {
-		return menu;
 	}
 	
 	public void addToContainer(JComponent view) {

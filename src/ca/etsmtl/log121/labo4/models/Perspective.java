@@ -17,7 +17,6 @@ public class Perspective extends Observable implements Model {
 	public Perspective() {
 		coordonnee = new Coordonnee(0,0);
 		zoom = 1;
-		
 	}
 	
 	/**
