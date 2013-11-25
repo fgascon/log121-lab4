@@ -23,27 +23,26 @@ public class ImageModel extends Observable implements Model {
 	/**
 	 * 
 	 */
-	private String imagePath;
+	private File imageFile;
 	
 	/**
 	 * 
 	 */
 	public ImageModel(){
-		imagePath = null;
+		imageFile = null;
 		image = new BufferedImage(256, 256, BufferedImage.TYPE_INT_RGB);
 	}
 	
 	/**
 	 * 
-	 * @param path le chemin d'accès vers l'image
+	 * @param file le fichier à charger
 	 * @throws IOException erreur durant le chargement de l'image
 	 */
-	public void load(String path) throws IOException {
-		imagePath = path;
-		if(imagePath == null) {
+	public void load(File file) throws IOException {
+		imageFile = file;
+		if(imageFile == null) {
 			image = new BufferedImage(256, 256, BufferedImage.TYPE_INT_RGB);
 		} else {
-			File file = new File(path);
 			image = ImageIO.read(file);
 		}
 		setChanged();
@@ -72,28 +71,31 @@ public class ImageModel extends Observable implements Model {
 	}
 	
 	public String serialize() {
-		return imagePath;
+		return imageFile.getAbsolutePath();
 	}
 	
 	public void unserialize(String state) throws Exception {
-		if(state.equals("null")) {
-			state = null;
+		if(state == null) {
+			load(null);
+		} else if(state.equals("null")) {
+			load(null);
+		} else {
+			load(new File(state));
 		}
-		load(state);
 	}
 	
 	private class ImageModelState implements ModelState {
 		
-		public String savedImagePath;
+		public File savedFile;
 		public Image savedImage;
 		
 		public ImageModelState() {
-			savedImagePath = imagePath;
+			savedFile = imageFile;
 			savedImage = image;
 		}
 		
 		public void restore() {
-			imagePath = savedImagePath;
+			imageFile = savedFile;
 			image = savedImage;
 		}
 	}

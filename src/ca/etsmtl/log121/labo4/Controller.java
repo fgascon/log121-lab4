@@ -44,10 +44,10 @@ public class Controller
 		perspectives.get(0).addObserver(observer);
 	}
 	
-	public void loadImage(String path) throws IOException {
-		imageModel.load(path);
+	public void loadImage(File file) throws IOException {
+		imageModel.load(file);
 	}
-
+	
 	/**
 	 * 
 	 */

@@ -1,5 +1,6 @@
 package ca.etsmtl.log121.labo4;
 
+import java.io.File;
 import java.io.IOException;
 
 import ca.etsmtl.log121.labo4.views.*;
@@ -19,7 +20,7 @@ public class Application
 		
 		if(args.length >= 1) {
 			try {
-				application.getController().loadImage(args[0]);
+				application.getController().loadImage(new File(args[0]));
 			} catch (IOException e) {
 				System.out.println("Failed to load image.");
 				System.exit(1);
