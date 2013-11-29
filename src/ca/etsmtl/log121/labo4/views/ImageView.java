@@ -25,6 +25,8 @@ public class ImageView extends JPanel implements Observer {
 		this.setLayout(null);
 		this.setBounds(posX, posY, width, height);
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		
+		this.setBackground(Color.pink);
 	}
 	
 	public void setImage(Image image) {

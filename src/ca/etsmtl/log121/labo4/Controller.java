@@ -179,14 +179,29 @@ public class Controller
 				unZoom.addActionListener(new ActionListener(){
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
-						zoom(perspective, 0.9f);
+						zoom(perspective, 1/1.1f);
 					}
 				});
 				popMenu.add(unZoom);
+				
 				JMenuItem copy = new JMenuItem("Copy");
+				copy.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						copy(perspective);
+					}
+				});
 				popMenu.add(copy);
-				JMenuItem unCopy = new JMenuItem("unCopy");
-				popMenu.add(unCopy);				
+				
+				JMenuItem paste = new JMenuItem("Paste");
+				paste.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						paste(perspective);
+					}
+				});
+				popMenu.add(paste);	
+				
 				popMenu.show(event.getComponent(), event.getX(), event.getY());
 				
 								
