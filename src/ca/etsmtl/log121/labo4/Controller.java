@@ -91,8 +91,7 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void copy(int perspectiveIndex) {
-		Perspective perspective = perspectives.get(perspectiveIndex);
+	public void copy(Perspective perspective) {
 		CopyCommand copy = new CopyCommand(perspective);
 		CommandManager.getInstance().execute(copy);
 	}
@@ -100,8 +99,7 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void paste(int perspectiveIndex) {
-		Perspective perspective = perspectives.get(perspectiveIndex);
+	public void paste(Perspective perspective) {
 		PasteCommand paste = new PasteCommand(perspective);
 		CommandManager.getInstance().execute(paste);
 	}
@@ -118,8 +116,8 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void zoom(int perspectiveIndex, float unZoom) {
-		Perspective perspective = perspectives.get(perspectiveIndex);
+	public void zoom(Perspective perspective, float unZoom) {
+		//Perspective perspective = perspectives.get(perspectiveIndex);
 		ZoomCommand zoom = new ZoomCommand(perspective, unZoom);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(zoom);
@@ -218,7 +216,12 @@ public class Controller
 		
 		
 		public void mouseWheelMoved(MouseWheelEvent event) {
-			
+			 int rotation = event.getWheelRotation();
+			 
+			 if (rotation < 0)
+				 zoom(perspective,1.1f);
+			 if (rotation > 0)
+				 zoom(perspective,0.9f);
 		}
 	}
 }

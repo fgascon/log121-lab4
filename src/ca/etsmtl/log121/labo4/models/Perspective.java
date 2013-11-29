@@ -62,27 +62,23 @@ public class Perspective extends Observable implements Model {
 	}
 	
 	public String serialize() {
-		return Integer.toHexString(coordonnee.getX())
+		return Integer.toString(coordonnee.getX())
 				.concat(":")
-				.concat(Integer.toHexString(coordonnee.getY()))
+				.concat(Integer.toString(coordonnee.getY()))
 				.concat(":")
-				.concat(Float.toHexString(zoom));
+				.concat(Float.toString(zoom));
 	}
 	
 	public void unserialize(String state) throws Exception {
 		String[] stateArray = state.split(":");
 		if(stateArray.length != 3) {
-			//window.alert(stateArray.length);
-			System.out.println(state);
-			System.out.println(stateArray[0]);
-			System.out.println(stateArray[1]);
-			System.out.println(stateArray[2]);
-			System.out.println(stateArray[4]);
 			throw new Exception("Can't serialize Perspective: invalid state." + stateArray.length);
 		} else {
 			coordonnee.setX(Integer.parseInt(stateArray[0]));
 			coordonnee.setY(Integer.parseInt(stateArray[1]));
 			zoom = Float.parseFloat(stateArray[2]);
+			setChanged();
+			notifyObservers();
 		}
 	}
 	
