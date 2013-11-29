@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+
 import ca.etsmtl.log121.labo4.commands.*;
 import ca.etsmtl.log121.labo4.models.*;
 import ca.etsmtl.log121.labo4.views.ImageView;
@@ -166,6 +169,14 @@ public class Controller
 			lastDragPosition = currentPosition;
 			//System.out.println("Dragged: ("+currentPosition.getX()+", "+currentPosition.getY()+") ");
 		}
+		
+		/**public void popMenu(MouseEvent e){
+			JPopupMenu popMenu = new JPopupMenu();
+			JMenuItem unItem = new JMenuItem("Ta mere");
+			popMenu.add(unItem);
+			popMenu.show(e.getComponent(), e.getX(), e.getY());
+		}*/
+		
 		
 		public void mouseWheelMoved(MouseWheelEvent event) {
 			
