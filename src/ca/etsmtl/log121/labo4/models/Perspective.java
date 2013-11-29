@@ -55,7 +55,7 @@ public class Perspective extends Observable implements Model {
 	public void restoreState(ModelState state) {
 		if(state instanceof PerspectiveModelState) {
 			PerspectiveModelState perspectiveModelState = (PerspectiveModelState) state;
-			perspectiveModelState.restore();
+			perspectiveModelState.restore(this);
 			setChanged();
 			notifyObservers();
 		}
@@ -94,9 +94,9 @@ public class Perspective extends Observable implements Model {
 			savedZoom = zoom;
 		}
 		
-		public void restore() {
-			coordonnee.setX(savedXPosition);
-			coordonnee.setY(savedYPosition);
+		public void restore(Perspective unePerspective) {
+			unePerspective.coordonnee.setX(savedXPosition);
+			unePerspective.coordonnee.setY(savedYPosition);
 			zoom = savedZoom;
 		}
 	}

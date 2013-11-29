@@ -1,7 +1,11 @@
 package ca.etsmtl.log121.labo4;
 
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.io.File;
 import java.io.IOException;
@@ -112,8 +116,8 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void zoom(int perspectiveIndex, float unZoom) {
-		Perspective perspective = perspectives.get(perspectiveIndex);
+	public void zoom(Perspective perspective, float unZoom) {
+		//Perspective perspective = perspectives.get(perspectiveIndex);
 		ZoomCommand zoom = new ZoomCommand(perspective, unZoom);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(zoom);
@@ -159,7 +163,51 @@ public class Controller
 		
 		public void mouseClicked(MouseEvent event) {
 			
+			if (event.getButton() == 3){
+				JPopupMenu popMenu = new JPopupMenu();
+				JMenuItem zoom = new JMenuItem("Zoom 10%");
+				
+				zoom.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						zoom(perspective, 1.1f);
+					}
+				});
+				popMenu.add(zoom);
+				
+				JMenuItem unZoom = new JMenuItem("Unzoom 10%");
+				unZoom.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						zoom(perspective, 1/1.1f);
+					}
+				});
+				popMenu.add(unZoom);
+				
+				JMenuItem copy = new JMenuItem("Copy");
+				copy.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						copy(perspective);
+					}
+				});
+				popMenu.add(copy);
+				
+				JMenuItem paste = new JMenuItem("Paste");
+				paste.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						paste(perspective);
+					}
+				});
+				popMenu.add(paste);	
+				
+				popMenu.show(event.getComponent(), event.getX(), event.getY());
+				
+								
+			}
 		}
+		
 		
 		public void mouseReleased(MouseEvent event) {
 			if(translationBegin != null) {
@@ -195,7 +243,12 @@ public class Controller
 		}*/
 		
 		public void mouseWheelMoved(MouseWheelEvent event) {
-			
+			 int rotation = event.getWheelRotation();
+			 
+			 if (rotation < 0)
+				 zoom(perspective,(1f/0.9f));
+			 if (rotation > 0)
+				 zoom(perspective,0.9f);
 		}
 	}
 }

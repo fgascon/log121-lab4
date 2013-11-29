@@ -112,6 +112,21 @@ public class MenuFenetre extends JMenuBar {
 				}
 			}
 		});
+		dropdown.addItem(new MenuItem("quitter") {
+			
+			public KeyStroke shortcut() {
+				return KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK);
+			}
+			
+			public void actionPerformed(ActionEvent event) {
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.exit(0);
+			}
+		});
 	}
 	
 	/**
