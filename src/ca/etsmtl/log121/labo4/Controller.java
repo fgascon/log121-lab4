@@ -219,7 +219,7 @@ public class Controller
 			 int rotation = event.getWheelRotation();
 			 
 			 if (rotation < 0)
-				 zoom(perspective,1.1f);
+				 zoom(perspective,(1f/0.9f));
 			 if (rotation > 0)
 				 zoom(perspective,0.9f);
 		}
