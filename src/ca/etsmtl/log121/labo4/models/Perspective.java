@@ -97,7 +97,7 @@ public class Perspective extends Observable implements Model {
 		public void restore(Perspective unePerspective) {
 			unePerspective.coordonnee.setX(savedXPosition);
 			unePerspective.coordonnee.setY(savedYPosition);
-			zoom = savedZoom;
+			unePerspective.zoom = savedZoom;
 		}
 	}
 }

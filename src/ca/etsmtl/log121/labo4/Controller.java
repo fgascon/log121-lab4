@@ -168,7 +168,6 @@ public class Controller
 				JMenuItem zoom = new JMenuItem("Zoom 10%");
 				
 				zoom.addActionListener(new ActionListener(){
-					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						zoom(perspective, 1.1f);
 					}
@@ -177,7 +176,6 @@ public class Controller
 				
 				JMenuItem unZoom = new JMenuItem("Unzoom 10%");
 				unZoom.addActionListener(new ActionListener(){
-					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						zoom(perspective, 1/1.1f);
 					}
@@ -186,7 +184,6 @@ public class Controller
 				
 				JMenuItem copy = new JMenuItem("Copy");
 				copy.addActionListener(new ActionListener(){
-					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						copy(perspective);
 					}
@@ -195,7 +192,6 @@ public class Controller
 				
 				JMenuItem paste = new JMenuItem("Paste");
 				paste.addActionListener(new ActionListener(){
-					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						paste(perspective);
 					}
