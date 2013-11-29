@@ -72,6 +72,7 @@ public class PerspectiveView extends ImageView
 	 */
 	@Override
 	protected void drawImage(Graphics graphics) {
+		
 		graphics.drawImage(image, position.getX(), position.getY(), (int)(this.getWidth()*zoom), (int)(this.getHeight()*zoom), null);
 	}
 }

@@ -114,8 +114,8 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void zoom(int perspectiveIndex, float unZoom) {
-		Perspective perspective = perspectives.get(perspectiveIndex);
+	public void zoom(Perspective perspective, float unZoom) {
+		//Perspective perspective = perspectives.get(perspectiveIndex);
 		ZoomCommand zoom = new ZoomCommand(perspective, unZoom);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(zoom);
@@ -185,7 +185,12 @@ public class Controller
 		
 		
 		public void mouseWheelMoved(MouseWheelEvent event) {
-			
+			 int rotation = event.getWheelRotation();
+			 
+			 if (rotation < 0)
+				 zoom(perspective,1.1f);
+			 if (rotation > 0)
+				 zoom(perspective,0.9f);
 		}
 	}
 }
