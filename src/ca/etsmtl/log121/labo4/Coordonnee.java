@@ -1,5 +1,7 @@
 package ca.etsmtl.log121.labo4;
 
+import java.awt.Point;
+
 /**
  * Coordonnée cartésienne
  */
@@ -22,6 +24,14 @@ public class Coordonnee
 	public Coordonnee(int positionX, int positionY){
 		this.positionX = positionX;
 		this.positionY = positionY;
+	}
+	
+	/**
+	 * Constructeur à partir d'un point
+	 */
+	public Coordonnee(Point point){
+		this.positionX = (int) point.getX();
+		this.positionY = (int) point.getY();
 	}
 
 	/**
@@ -60,5 +70,14 @@ public class Coordonnee
 	 */
 	public Coordonnee copy() {
 		return new Coordonnee(positionX, positionY);
+	}
+	
+	/**
+	 * Différence entre 2 coordonées
+	 * @param otherPoint Autre point 
+	 * @return Une Coordonnee représentant la différence entre les deux points
+	 */
+	public Coordonnee diff(Coordonnee otherPoint) {
+		return new Coordonnee(getX() - otherPoint.getX(), getY() - otherPoint.getY());
 	}
 }

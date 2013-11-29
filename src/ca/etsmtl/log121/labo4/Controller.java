@@ -1,12 +1,16 @@
 package ca.etsmtl.log121.labo4;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Observer;
 
 import ca.etsmtl.log121.labo4.commands.*;
 import ca.etsmtl.log121.labo4.models.*;
+import ca.etsmtl.log121.labo4.views.ImageView;
+import ca.etsmtl.log121.labo4.views.PerspectiveView;
 
 
 /**
@@ -36,12 +40,14 @@ public class Controller
 		}
 	}
 	
-	public void observeImage(Observer observer) {
-		imageModel.addObserver(observer);
+	public void observeImage(ImageView view) {
+		imageModel.addObserver(view);
 	}
 	
-	public void observePerspective(int perspectiveIndex, Observer observer) {
-		perspectives.get(0).addObserver(observer);
+	public void observePerspective(int perspectiveIndex, PerspectiveView view) {
+		Perspective perspective = perspectives.get(perspectiveIndex);
+		perspective.addObserver(view);
+		view.addMouseMotionListener(new MouseControl(perspective));
 	}
 	
 	public void loadImage(File file) throws IOException {
@@ -89,9 +95,7 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void translate(int perspectiveIndex, Coordonnee uneCoordonnee) {
-		Perspective perspective = perspectives.get(perspectiveIndex);
-		Coordonnee coordonnee = uneCoordonnee;
+	public void translate(Perspective perspective, Coordonnee coordonnee) {
 		TranslationCommand translation = new TranslationCommand(perspective, coordonnee);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(translation);
@@ -132,6 +136,35 @@ public class Controller
 		imageModel.unserialize(contentParts[0]);
 		for(int i=0; i<2; i++) {
 			perspectives.get(i).unserialize(contentParts[i+1]);
+		}
+	}
+	
+	private class MouseControl extends MouseAdapter {
+		
+		private Perspective perspective;
+		
+		private Coordonnee lastDragPosition;
+		
+		public MouseControl(Perspective perspective) {
+			this.perspective = perspective;
+		}
+		
+		public void mouseClicked(MouseEvent event) {
+			
+		}
+		
+		public void mouseDragged(MouseEvent event) {
+			Coordonnee currentPosition = new Coordonnee(event.getPoint());
+			if(lastDragPosition != null) {
+				Coordonnee dragDistance = currentPosition.diff(lastDragPosition);
+				translate(perspective, dragDistance);
+			}
+			lastDragPosition = currentPosition;
+			//System.out.println("Dragged: ("+currentPosition.getX()+", "+currentPosition.getY()+") ");
+		}
+		
+		public void mouseWheelMoved(MouseWheelEvent event) {
+			
 		}
 	}
 }

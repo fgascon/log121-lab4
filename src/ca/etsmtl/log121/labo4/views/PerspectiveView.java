@@ -11,11 +11,8 @@ import ca.etsmtl.log121.labo4.models.Perspective;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ * 
  */
-
 public class PerspectiveView extends ImageView
 {
 	
@@ -31,6 +28,13 @@ public class PerspectiveView extends ImageView
 	 */
 	private float zoom;
 	
+	/**
+	 * 
+	 * @param unePosX
+	 * @param unePosY
+	 * @param uneWidth
+	 * @param uneHeight
+	 */
 	public PerspectiveView(int unePosX, int unePosY, int uneWidth, int uneHeight) {
 		super(unePosX, unePosY, uneWidth, uneHeight);
 	}
