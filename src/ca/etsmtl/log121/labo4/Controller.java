@@ -1,15 +1,12 @@
 package ca.etsmtl.log121.labo4;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
@@ -34,25 +31,21 @@ public class Controller
 	/**
 	 * 
 	 */
-	private final ArrayList<Perspective> perspectives;
+	private final Perspective perspective;
 	
 	/**
 	 * 
 	 */
 	public Controller(int nbPerspective){
 		imageModel = new ImageModel();
-		perspectives = new ArrayList<Perspective>(nbPerspective);
-		for(int i=0; i<nbPerspective; i++) {
-			perspectives.add(new Perspective());
-		}
+		perspective = new Perspective();
 	}
 	
 	public void observeImage(ImageView view) {
 		imageModel.addObserver(view);
 	}
 	
-	public void observePerspective(int perspectiveIndex, PerspectiveView view) {
-		Perspective perspective = perspectives.get(perspectiveIndex);
+	public void observePerspective(PerspectiveView view) {
 		perspective.addObserver(view);
 		MouseControl mouseControl = new MouseControl(perspective);
 		view.addMouseListener(mouseControl);
@@ -73,10 +66,6 @@ public class Controller
 			commandManager.undo();
 		}
 	}
-	/**
-	public void popMenu(MouseEvent e){
-		JPopupMenu popMenu = new JpopupMenu();
-	}*/
 	
 	/**
 	 * 
@@ -91,7 +80,7 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void copy(Perspective perspective) {
+	public void copy() {
 		CopyCommand copy = new CopyCommand(perspective);
 		CommandManager.getInstance().execute(copy);
 	}
@@ -99,7 +88,7 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void paste(Perspective perspective) {
+	public void paste() {
 		PasteCommand paste = new PasteCommand(perspective);
 		CommandManager.getInstance().execute(paste);
 	}
@@ -107,7 +96,7 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void translate(Perspective perspective, Coordonnee distance) {
+	public void translate(Coordonnee distance) {
 		TranslationCommand translation = new TranslationCommand(perspective, distance);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(translation);
@@ -116,7 +105,7 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void zoom(Perspective perspective, float unZoom) {
+	public void zoom(float unZoom) {
 		//Perspective perspective = perspectives.get(perspectiveIndex);
 		ZoomCommand zoom = new ZoomCommand(perspective, unZoom);
 		CommandManager commandManager = CommandManager.getInstance();
@@ -129,9 +118,7 @@ public class Controller
 	 */
 	public void save(File file) throws IOException {
 		String content = imageModel.serialize();
-		for(int i=0; i<perspectives.size(); i++) {
-			content += ";" + perspectives.get(i).serialize();
-		}
+		content += ";" + perspective.serialize();
 		FileAccess.writeFile(file, content);
 	}
 	
@@ -146,9 +133,7 @@ public class Controller
 			throw new Exception("Invalid file format");
 		}
 		imageModel.unserialize(contentParts[0]);
-		for(int i=0; i<2; i++) {
-			perspectives.get(i).unserialize(contentParts[i+1]);
-		}
+		perspective.unserialize(contentParts[1]);
 	}
 	
 	private class MouseControl extends MouseAdapter {
@@ -169,7 +154,7 @@ public class Controller
 				
 				zoom.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent arg0) {
-						zoom(perspective, 1.1f);
+						zoom(1.1f);
 					}
 				});
 				popMenu.add(zoom);
@@ -177,7 +162,7 @@ public class Controller
 				JMenuItem unZoom = new JMenuItem("Unzoom 10%");
 				unZoom.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent arg0) {
-						zoom(perspective, 1/1.1f);
+						zoom(1/1.1f);
 					}
 				});
 				popMenu.add(unZoom);
@@ -185,7 +170,7 @@ public class Controller
 				JMenuItem copy = new JMenuItem("Copy");
 				copy.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent arg0) {
-						copy(perspective);
+						copy();
 					}
 				});
 				popMenu.add(copy);
@@ -193,7 +178,7 @@ public class Controller
 				JMenuItem paste = new JMenuItem("Paste");
 				paste.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent arg0) {
-						paste(perspective);
+						paste();
 					}
 				});
 				popMenu.add(paste);	
@@ -210,7 +195,7 @@ public class Controller
 				Coordonnee translationEnd = new Coordonnee(event.getPoint());
 				Coordonnee dragDistance = translationEnd.diff(translationBegin);
 				if(dragDistance.getX() != 0 && dragDistance.getY() != 0) {
-					translate(perspective, dragDistance);
+					translate(dragDistance);
 				}
 				translationBegin = null;
 			}
@@ -231,20 +216,13 @@ public class Controller
 			}
 		}
 		
-		/**public void popMenu(MouseEvent e){
-			JPopupMenu popMenu = new JPopupMenu();
-			JMenuItem unItem = new JMenuItem("Ta mere");
-			popMenu.add(unItem);
-			popMenu.show(e.getComponent(), e.getX(), e.getY());
-		}*/
-		
 		public void mouseWheelMoved(MouseWheelEvent event) {
 			 int rotation = event.getWheelRotation();
 			 
 			 if (rotation < 0)
-				 zoom(perspective,(1f/0.9f));
+				 zoom(1f/0.9f);
 			 if (rotation > 0)
-				 zoom(perspective,0.9f);
+				 zoom(0.9f);
 		}
 	}
 }

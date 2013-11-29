@@ -40,8 +40,8 @@ public class Application
 		controller = new Controller(2);
 		fenetrePrincipale = new FenetrePrincipale(controller);
 		
-		this.creerPerspectiveView(0, 10, 10, 350, 350);
-		this.creerPerspectiveView(1, 375, 10, 350, 350);
+		this.creerPerspectiveView(10, 10, 350, 350);
+		this.creerPerspectiveView(375, 10, 350, 350);
 		this.creerView(328, 362, 75, 75);
 	}
 	
@@ -51,11 +51,11 @@ public class Application
 		controller.observeImage(view);
 	}
 	
-	private void creerPerspectiveView(int perspectiveIndex, int posX, int posY, int width, int height) {
+	private void creerPerspectiveView(int posX, int posY, int width, int height) {
 		PerspectiveView view = new PerspectiveView(posX, posY, width, height);
 		fenetrePrincipale.addToContainer(view);
 		controller.observeImage(view);
-		controller.observePerspective(perspectiveIndex, view);
+		controller.observePerspective(view);
 	}
 	
 	public void setWindowVisible(boolean visible) {
