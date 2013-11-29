@@ -151,7 +151,7 @@ public class Controller
 		
 		private Perspective perspective;
 		
-		private Coordonnee lastDragPosition;
+		private Coordonnee translationBegin;
 		
 		public MouseControl(Perspective perspective) {
 			this.perspective = perspective;
@@ -162,16 +162,29 @@ public class Controller
 		}
 		
 		public void mouseReleased(MouseEvent event) {
-			lastDragPosition = null;
+			if(translationBegin != null) {
+				Coordonnee translationEnd = new Coordonnee(event.getPoint());
+				Coordonnee dragDistance = translationEnd.diff(translationBegin);
+				if(dragDistance.getX() != 0 && dragDistance.getY() != 0) {
+					translate(perspective, dragDistance);
+				}
+				translationBegin = null;
+			}
+		}
+		
+		public void mousePressed(MouseEvent event) {
+			translationBegin = new Coordonnee(event.getPoint());
 		}
 		
 		public void mouseDragged(MouseEvent event) {
-			Coordonnee currentPosition = new Coordonnee(event.getPoint());
-			if(lastDragPosition != null) {
-				Coordonnee dragDistance = currentPosition.diff(lastDragPosition);
-				translate(perspective, dragDistance);
+			if(event.getSource() instanceof PerspectiveView) {
+				PerspectiveView view = (PerspectiveView) event.getSource();
+				if(translationBegin != null) {
+					Coordonnee currentPosition = new Coordonnee(event.getPoint());
+					Coordonnee dragDistance = currentPosition.diff(translationBegin);
+					view.setPosition(perspective.getPosition().add(dragDistance));
+				}
 			}
-			lastDragPosition = currentPosition;
 		}
 		
 		/**public void popMenu(MouseEvent e){
@@ -180,7 +193,6 @@ public class Controller
 			popMenu.add(unItem);
 			popMenu.show(e.getComponent(), e.getX(), e.getY());
 		}*/
-		
 		
 		public void mouseWheelMoved(MouseWheelEvent event) {
 			
