@@ -87,8 +87,7 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void copy(int perspectiveIndex) {
-		Perspective perspective = perspectives.get(perspectiveIndex);
+	public void copy(Perspective perspective) {
 		CopyCommand copy = new CopyCommand(perspective);
 		CommandManager.getInstance().execute(copy);
 	}
@@ -96,8 +95,7 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void paste(int perspectiveIndex) {
-		Perspective perspective = perspectives.get(perspectiveIndex);
+	public void paste(Perspective perspective) {
 		PasteCommand paste = new PasteCommand(perspective);
 		CommandManager.getInstance().execute(paste);
 	}
