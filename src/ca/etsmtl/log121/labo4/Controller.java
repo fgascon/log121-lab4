@@ -47,7 +47,10 @@ public class Controller
 	public void observePerspective(int perspectiveIndex, PerspectiveView view) {
 		Perspective perspective = perspectives.get(perspectiveIndex);
 		perspective.addObserver(view);
-		view.addMouseMotionListener(new MouseControl(perspective));
+		MouseControl mouseControl = new MouseControl(perspective);
+		view.addMouseListener(mouseControl);
+		view.addMouseMotionListener(mouseControl);
+		view.addMouseWheelListener(mouseControl);
 	}
 	
 	public void loadImage(File file) throws IOException {
@@ -157,6 +160,10 @@ public class Controller
 			
 		}
 		
+		public void mouseReleased(MouseEvent event) {
+			lastDragPosition = null;
+		}
+		
 		public void mouseDragged(MouseEvent event) {
 			Coordonnee currentPosition = new Coordonnee(event.getPoint());
 			if(lastDragPosition != null) {
@@ -164,7 +171,6 @@ public class Controller
 				translate(perspective, dragDistance);
 			}
 			lastDragPosition = currentPosition;
-			//System.out.println("Dragged: ("+currentPosition.getX()+", "+currentPosition.getY()+") ");
 		}
 		
 		public void mouseWheelMoved(MouseWheelEvent event) {
