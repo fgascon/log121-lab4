@@ -1,9 +1,16 @@
 package ca.etsmtl.log121.labo4;
 
+import java.awt.Event;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observer;
+
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
 import ca.etsmtl.log121.labo4.commands.*;
 import ca.etsmtl.log121.labo4.models.*;
@@ -57,6 +64,10 @@ public class Controller
 			commandManager.undo();
 		}
 	}
+	/**
+	public void popMenu(MouseEvent e){
+		JPopupMenu popMenu = new JpopupMenu();
+	}*/
 	
 	/**
 	 * 
@@ -134,4 +145,5 @@ public class Controller
 			perspectives.get(i).unserialize(contentParts[i+1]);
 		}
 	}
+	
 }

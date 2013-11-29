@@ -42,7 +42,7 @@ public class Application
 		
 		this.creerPerspectiveView(0, 10, 10, 350, 350);
 		this.creerPerspectiveView(1, 375, 10, 350, 350);
-		this.creerView(328, 370, 75, 75);
+		this.creerView(328, 362, 75, 75);
 	}
 	
 	private void creerView(int posX, int posY, int width, int height) {

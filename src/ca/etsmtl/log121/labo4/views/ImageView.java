@@ -40,7 +40,7 @@ public class ImageView extends JPanel implements Observer {
 	}
 	
 	protected void drawImage(Graphics graphics) {
-		graphics.drawImage(image, 0, 0, null);
+		graphics.drawImage(image, 0, 0, this.getWidth(), this.getHeight(),this);
 	}
 	
 	@Override

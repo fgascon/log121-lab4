@@ -29,7 +29,7 @@ public class PerspectiveView extends ImageView
 	/**
 	 * 
 	 */
-	private float zoom;
+	private float zoom = 1;
 	
 	public PerspectiveView(int unePosX, int unePosY, int uneWidth, int uneHeight) {
 		super(unePosX, unePosY, uneWidth, uneHeight);
@@ -68,15 +68,10 @@ public class PerspectiveView extends ImageView
 	/**
 	 * 
 	 */
-	/*@Override
+	@Override
 	protected void drawImage(Graphics graphics) {
-		RescaleOp rescaleOperation = new RescaleOp(zoom, 0, null);
 		
 		//transform the image in a buffered image, so we can manipulate it
-		BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-		bufferedImage.getGraphics().drawImage(image, 0, 0, null);
-		
-		Graphics2D graphics2D = (Graphics2D) graphics;
-		graphics2D.drawImage(bufferedImage, rescaleOperation, position.getX(), position.getY());
-	}*/
+		graphics.drawImage(image, 0, 0, (int)(this.getWidth()*zoom), (int)(this.getHeight()*zoom) ,null);
+	}
 }
