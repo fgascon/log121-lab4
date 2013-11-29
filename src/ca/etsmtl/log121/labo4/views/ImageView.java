@@ -29,7 +29,7 @@ public class ImageView extends JPanel implements Observer {
 	
 	public void setImage(Image image) {
 		this.image = image;
-		drawImage();
+		repaint();
 	}
 	
 	public void update(Observable observable, Object objet) {
@@ -39,8 +39,13 @@ public class ImageView extends JPanel implements Observer {
 		}
 	}
 	
-	protected void drawImage() {
-		this.getGraphics().drawImage(image, 0, 0, null);
+	protected void drawImage(Graphics graphics) {
+		graphics.drawImage(image, 0, 0, null);
+	}
+	
+	@Override
+	public void paintComponent(Graphics graphics) {
+		super.paintComponent(graphics);
+		drawImage(graphics);
 	}
 }
-
