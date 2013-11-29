@@ -1,7 +1,11 @@
 package ca.etsmtl.log121.labo4;
 
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.io.File;
 import java.io.IOException;
@@ -161,7 +165,36 @@ public class Controller
 		
 		public void mouseClicked(MouseEvent event) {
 			
+			if (event.getButton() == 3){
+				JPopupMenu popMenu = new JPopupMenu();
+				JMenuItem zoom = new JMenuItem("Zoom 10%");
+				
+				zoom.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						zoom(perspective, 1.1f);
+					}
+				});
+				popMenu.add(zoom);
+				
+				JMenuItem unZoom = new JMenuItem("Unzoom 10%");
+				unZoom.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						zoom(perspective, 0.9f);
+					}
+				});
+				popMenu.add(unZoom);
+				JMenuItem copy = new JMenuItem("Copy");
+				popMenu.add(copy);
+				JMenuItem unCopy = new JMenuItem("unCopy");
+				popMenu.add(unCopy);				
+				popMenu.show(event.getComponent(), event.getX(), event.getY());
+				
+								
+			}
 		}
+		
 		
 		public void mouseReleased(MouseEvent event) {
 			lastDragPosition = null;
