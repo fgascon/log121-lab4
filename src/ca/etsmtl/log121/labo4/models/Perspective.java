@@ -33,9 +33,9 @@ public class Perspective extends Observable implements Model {
 		notifyObservers();
 	}
 	
-	public void setPosition(int posX, int posY){
-		coordonnee.setX(posX);
-		coordonnee.setY(posY);
+	public void setPosition(Coordonnee position){
+		coordonnee.setX(position.getX());
+		coordonnee.setY(position.getY());
 		setChanged();
 		notifyObservers();
 	}

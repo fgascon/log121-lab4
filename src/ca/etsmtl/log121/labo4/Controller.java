@@ -63,6 +63,10 @@ public class Controller
 			commandManager.undo();
 		}
 	}
+	/**
+	public void popMenu(MouseEvent e){
+		JPopupMenu popMenu = new JpopupMenu();
+	}*/
 	
 	/**
 	 * 
@@ -95,8 +99,8 @@ public class Controller
 	/**
 	 * 
 	 */
-	public void translate(Perspective perspective, Coordonnee coordonnee) {
-		TranslationCommand translation = new TranslationCommand(perspective, coordonnee);
+	public void translate(Perspective perspective, Coordonnee distance) {
+		TranslationCommand translation = new TranslationCommand(perspective, distance);
 		CommandManager commandManager = CommandManager.getInstance();
 		commandManager.execute(translation);
 	}

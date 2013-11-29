@@ -1,9 +1,6 @@
 package ca.etsmtl.log121.labo4.views;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.awt.image.RescaleOp;
 import java.util.Observable;
 
 import ca.etsmtl.log121.labo4.Coordonnee;
@@ -26,7 +23,7 @@ public class PerspectiveView extends ImageView
 	/**
 	 * 
 	 */
-	private float zoom;
+	private float zoom = 1;
 	
 	/**
 	 * 
@@ -37,6 +34,7 @@ public class PerspectiveView extends ImageView
 	 */
 	public PerspectiveView(int unePosX, int unePosY, int uneWidth, int uneHeight) {
 		super(unePosX, unePosY, uneWidth, uneHeight);
+		position = new Coordonnee(0, 0);
 	}
 	
 	/**
@@ -72,15 +70,8 @@ public class PerspectiveView extends ImageView
 	/**
 	 * 
 	 */
-	/*@Override
+	@Override
 	protected void drawImage(Graphics graphics) {
-		RescaleOp rescaleOperation = new RescaleOp(zoom, 0, null);
-		
-		//transform the image in a buffered image, so we can manipulate it
-		BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-		bufferedImage.getGraphics().drawImage(image, 0, 0, null);
-		
-		Graphics2D graphics2D = (Graphics2D) graphics;
-		graphics2D.drawImage(bufferedImage, rescaleOperation, position.getX(), position.getY());
-	}*/
+		graphics.drawImage(image, position.getX(), position.getY(), (int)(this.getWidth()*zoom), (int)(this.getHeight()*zoom), null);
+	}
 }

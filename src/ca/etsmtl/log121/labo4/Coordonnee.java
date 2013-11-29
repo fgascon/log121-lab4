@@ -61,7 +61,7 @@ public class Coordonnee
 	 * @param value Nouvelle valeur en Y
 	 */
 	public void setY(int value) {
-		positionX = value;
+		positionY = value;
 	}
 	
 	/**
@@ -79,5 +79,13 @@ public class Coordonnee
 	 */
 	public Coordonnee diff(Coordonnee otherPoint) {
 		return new Coordonnee(getX() - otherPoint.getX(), getY() - otherPoint.getY());
+	}
+	
+	public Coordonnee add(Coordonnee otherPoint) {
+		return new Coordonnee(getX() + otherPoint.getX(), getY() + otherPoint.getY());
+	}
+	
+	public String toString() {
+		return getX()+","+getY();
 	}
 }
