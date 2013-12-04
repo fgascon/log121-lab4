@@ -93,6 +93,11 @@ public class Controller
 		CommandManager.getInstance().execute(paste);
 	}
 	
+	public void pasteEchelle() {
+		PasteEchelle pasteEchelle = new PasteEchelle(perspective);
+		CommandManager.getInstance().execute(pasteEchelle);
+	}
+	
 	/**
 	 * 
 	 */
@@ -181,7 +186,23 @@ public class Controller
 						paste();
 					}
 				});
-				popMenu.add(paste);	
+				popMenu.add(paste);
+				
+				JMenuItem pasteFacteurEchelle = new JMenuItem("Coller Facteur d'échelle");
+				pasteFacteurEchelle.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent arg0) {
+						pasteEchelle();
+					}
+				});
+				popMenu.add(pasteFacteurEchelle);
+				
+				JMenuItem pasteTranslation = new JMenuItem("Coller Translation");
+				pasteTranslation.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent arg0) {
+						pasteEchelle();
+					}
+				});
+				popMenu.add(pasteTranslation);
 				
 				popMenu.show(event.getComponent(), event.getX(), event.getY());
 				

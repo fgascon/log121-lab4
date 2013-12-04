@@ -18,6 +18,7 @@ public class CopyCommand implements Command {
 	public CopyCommand(Model model){
 		this.model = model;
 	}
+	
 
 	/**
 	 * 
