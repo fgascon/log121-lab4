@@ -1,3 +1,14 @@
+/******************************************************
+Cours:  LOG121
+Projet: Laboratoire 4
+Nom du fichier: Controller.java
+Date créé: 2013-11-22
+ *******************************************************
+Historique des modifications
+ *******************************************************
+ *@author Shaun-David Sauro, Gabriel St-Hilaire, Frédéric Gascon
+ *@date 2013-11-22
+ *******************************************************/
 package ca.etsmtl.log121.labo4;
 
 import java.awt.event.ActionEvent;
@@ -34,17 +45,26 @@ public class Controller
 	private final Perspective perspective;
 	
 	/**
-	 * 
+	 * Constructeur du controlleur
+	 * @param nbPerspective Le nombre de perspective qu'il y aura dans l'application
 	 */
 	public Controller(int nbPerspective){
 		imageModel = new ImageModel();
 		perspective = new Perspective();
 	}
 	
+	/**
+	 * Ajoute un Observer a une vue
+	 * @param view La vue à ajouter l'observer
+	 * */
 	public void observeImage(ImageView view) {
 		imageModel.addObserver(view);
 	}
 	
+	/**
+	 * Ajoute un Observer a une perspective et les listeners appropriés
+	 * @param view La vue à ajouter l'observer
+	 * */
 	public void observePerspective(PerspectiveView view) {
 		perspective.addObserver(view);
 		MouseControl mouseControl = new MouseControl(perspective);
@@ -53,12 +73,16 @@ public class Controller
 		view.addMouseWheelListener(mouseControl);
 	}
 	
+	/**
+	 * Méthode permettant de charger l'image dans l'application
+	 * @param L'image a charger
+	 */
 	public void loadImage(File file) throws IOException {
 		imageModel.load(file);
 	}
 	
 	/**
-	 * 
+	 * Sert a canceller la commande fait précédemment
 	 */
 	public void undo() {
 		CommandManager commandManager = CommandManager.getInstance();
@@ -68,7 +92,7 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Sert a refaire la commance cancellée précédemment
 	 */
 	public void redo() {
 		CommandManager commandManager = CommandManager.getInstance();
@@ -78,7 +102,7 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Copy les paramètres de la photo dans le ClipBoard
 	 */
 	public void copy() {
 		CopyCommand copy = new CopyCommand(perspective);
@@ -86,15 +110,20 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Colle les paramètres de la photo dans le ClipBoard
 	 */
 	public void paste() {
 		PasteCommand paste = new PasteCommand(perspective);
 		CommandManager.getInstance().execute(paste);
 	}
 	
+	public void pasteEchelle() {
+		PasteEchelle pasteEchelle = new PasteEchelle(perspective);
+		CommandManager.getInstance().execute(pasteEchelle);
+	}
+	
 	/**
-	 * 
+	 * Permet d'éffectuer la transtlation de la photo
 	 */
 	public void translate(Coordonnee distance) {
 		TranslationCommand translation = new TranslationCommand(perspective, distance);
@@ -103,7 +132,7 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Permet de Zoomer sur la photo
 	 */
 	public void zoom(float unZoom) {
 		//Perspective perspective = perspectives.get(perspectiveIndex);
@@ -113,7 +142,7 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Permet de sauvegarder l'état de la photo pour une utilisation ultérieure
 	 * @throws IOException 
 	 */
 	public void save(File file) throws IOException {
@@ -123,7 +152,8 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Sert a ouvrir une Photo
+	 * @param file Photo a ouvrire
 	 * @throws Exception 
 	 */
 	public void open(File file) throws Exception {
@@ -181,7 +211,23 @@ public class Controller
 						paste();
 					}
 				});
-				popMenu.add(paste);	
+				popMenu.add(paste);
+				
+				JMenuItem pasteFacteurEchelle = new JMenuItem("Coller Facteur d'échelle");
+				pasteFacteurEchelle.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent arg0) {
+						pasteEchelle();
+					}
+				});
+				popMenu.add(pasteFacteurEchelle);
+				
+				JMenuItem pasteTranslation = new JMenuItem("Coller Translation");
+				pasteTranslation.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent arg0) {
+						pasteEchelle();
+					}
+				});
+				popMenu.add(pasteTranslation);
 				
 				popMenu.show(event.getComponent(), event.getX(), event.getY());
 				
@@ -216,6 +262,10 @@ public class Controller
 			}
 		}
 		
+		/**
+		 * Lorsque la molette de la souris vas vers l'avant l'image s'aggrandit
+		 * Vers l'arrière elle diminue
+		 */
 		public void mouseWheelMoved(MouseWheelEvent event) {
 			 int rotation = event.getWheelRotation();
 			 

@@ -1,3 +1,14 @@
+/******************************************************
+Cours:  LOG121
+Projet: Laboratoire 4
+Nom du fichier: CopyManager.java
+Date créé: 2013-11-22
+ *******************************************************
+Historique des modifications
+ *******************************************************
+ *@author Shaun-David Sauro, Gabriel St-Hilaire, Frédéric Gascon
+ *@date 2013-11-22
+ *******************************************************/
 package ca.etsmtl.log121.labo4.commands;
 
 import ca.etsmtl.log121.labo4.ClipBoard;
@@ -18,6 +29,7 @@ public class CopyCommand implements Command {
 	public CopyCommand(Model model){
 		this.model = model;
 	}
+	
 
 	/**
 	 * 
