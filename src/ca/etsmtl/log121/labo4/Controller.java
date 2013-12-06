@@ -45,17 +45,26 @@ public class Controller
 	private final Perspective perspective;
 	
 	/**
-	 * 
+	 * Constructeur du controlleur
+	 * @param nbPerspective Le nombre de perspective qu'il y aura dans l'application
 	 */
 	public Controller(int nbPerspective){
 		imageModel = new ImageModel();
 		perspective = new Perspective();
 	}
 	
+	/**
+	 * Ajoute un Observer a une vue
+	 * @param view La vue à ajouter l'observer
+	 * */
 	public void observeImage(ImageView view) {
 		imageModel.addObserver(view);
 	}
 	
+	/**
+	 * Ajoute un Observer a une perspective et les listeners appropriés
+	 * @param view La vue à ajouter l'observer
+	 * */
 	public void observePerspective(PerspectiveView view) {
 		perspective.addObserver(view);
 		MouseControl mouseControl = new MouseControl(perspective);
@@ -64,12 +73,16 @@ public class Controller
 		view.addMouseWheelListener(mouseControl);
 	}
 	
+	/**
+	 * Méthode permettant de charger l'image dans l'application
+	 * @param L'image a charger
+	 */
 	public void loadImage(File file) throws IOException {
 		imageModel.load(file);
 	}
 	
 	/**
-	 * 
+	 * Sert a canceller la commande fait précédemment
 	 */
 	public void undo() {
 		CommandManager commandManager = CommandManager.getInstance();
@@ -79,7 +92,7 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Sert a refaire la commance cancellée précédemment
 	 */
 	public void redo() {
 		CommandManager commandManager = CommandManager.getInstance();
@@ -89,7 +102,7 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Copy les paramètres de la photo dans le ClipBoard
 	 */
 	public void copy() {
 		CopyCommand copy = new CopyCommand(perspective);
@@ -97,7 +110,7 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Colle les paramètres de la photo dans le ClipBoard
 	 */
 	public void paste() {
 		PasteCommand paste = new PasteCommand(perspective);
@@ -110,7 +123,7 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Permet d'éffectuer la transtlation de la photo
 	 */
 	public void translate(Coordonnee distance) {
 		TranslationCommand translation = new TranslationCommand(perspective, distance);
@@ -119,7 +132,7 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Permet de Zoomer sur la photo
 	 */
 	public void zoom(float unZoom) {
 		//Perspective perspective = perspectives.get(perspectiveIndex);
@@ -129,7 +142,7 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Permet de sauvegarder l'état de la photo pour une utilisation ultérieure
 	 * @throws IOException 
 	 */
 	public void save(File file) throws IOException {
@@ -139,7 +152,8 @@ public class Controller
 	}
 	
 	/**
-	 * 
+	 * Sert a ouvrir une Photo
+	 * @param file Photo a ouvrire
 	 * @throws Exception 
 	 */
 	public void open(File file) throws Exception {
