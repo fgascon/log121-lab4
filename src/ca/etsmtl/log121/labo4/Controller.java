@@ -159,7 +159,7 @@ public class Controller
 	public void open(File file) throws Exception {
 		String content = FileAccess.readFile(file);
 		String[] contentParts = content.split(";");
-		if(contentParts.length != 3) {
+		if(contentParts.length != 2) {
 			throw new Exception("Invalid file format");
 		}
 		imageModel.unserialize(contentParts[0]);
