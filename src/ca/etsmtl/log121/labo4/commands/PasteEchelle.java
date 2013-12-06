@@ -24,6 +24,9 @@ public class PasteEchelle implements Command {
 		this.model = model;		
 	}
 	
+	/**
+	 * Ceci vas refaire la prochaine commande
+	 */
 	public void execute() {
 		ModelState stateInClipBoard = ClipBoard.getInstance().getContent();
 		if(stateInClipBoard != null) {
@@ -32,6 +35,9 @@ public class PasteEchelle implements Command {
 		}
 	}
 	
+	/**
+	 * Ceci annule la dernière commande
+	 */
 	public void unexecute(){
 		ModelState stateInClipBoard = ClipBoard.getInstance().getContent();
 		if(stateInClipBoard != null) {

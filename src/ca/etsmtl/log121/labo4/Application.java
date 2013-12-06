@@ -18,7 +18,7 @@ import java.io.IOException;
 import ca.etsmtl.log121.labo4.views.*;
 
 /**
- * 
+ * Classe principale
  */
 public class Application
 {
@@ -57,12 +57,18 @@ public class Application
 		this.creerView(328, 362, 75, 75);
 	}
 	
+	/**
+	 * Constructeur de la view
+	 */
 	private void creerView(int posX, int posY, int width, int height) {
 		ImageView view = new ImageView(posX, posY, width, height);
 		fenetrePrincipale.addToContainer(view);
 		controller.observeImage(view);
 	}
 	
+	/**
+	 * Constructeur de la perspective
+	 */
 	private void creerPerspectiveView(int posX, int posY, int width, int height) {
 		PerspectiveView view = new PerspectiveView(posX, posY, width, height);
 		fenetrePrincipale.addToContainer(view);

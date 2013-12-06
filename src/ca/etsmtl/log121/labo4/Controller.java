@@ -248,6 +248,10 @@ public class Controller
 			}
 		}
 		
+		/**
+		 * Lorsque la molette de la souris vas vers l'avant l'image s'aggrandit
+		 * Vers l'arrière elle diminue
+		 */
 		public void mouseWheelMoved(MouseWheelEvent event) {
 			 int rotation = event.getWheelRotation();
 			 

@@ -10,6 +10,7 @@ Date créé: 2013-05-03
 Historique des modifications
  *******************************************************
 2013-05-03 Version initiale
+Provient du laboratoire2
  *******************************************************/
 
 import java.util.Locale;
