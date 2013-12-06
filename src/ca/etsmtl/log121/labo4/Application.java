@@ -58,7 +58,11 @@ public class Application
 	}
 	
 	/**
-	 * Constructeur de la view
+	 * Constructeur de la view 
+	 * @param posX Position X de la view
+	 * @param posY Position Y de la view
+	 * @param width Largeur de la view
+	 * @param height Hauteur de la view
 	 */
 	private void creerView(int posX, int posY, int width, int height) {
 		ImageView view = new ImageView(posX, posY, width, height);
@@ -68,6 +72,10 @@ public class Application
 	
 	/**
 	 * Constructeur de la perspective
+	 * @param posX Position X de la view
+	 * @param posY Position Y de la view
+	 * @param width Largeur de la view
+	 * @param height Hauteur de la view
 	 */
 	private void creerPerspectiveView(int posX, int posY, int width, int height) {
 		PerspectiveView view = new PerspectiveView(posX, posY, width, height);
@@ -76,10 +84,17 @@ public class Application
 		controller.observePerspective(view);
 	}
 	
+	
+	/**
+	 * Méthode servant à afficher la fenêtre principale
+	 * */
 	public void setWindowVisible(boolean visible) {
 		fenetrePrincipale.setVisible(visible);
 	}
 	
+	/**
+	 * Méthode servant à retourner le controleur
+	 * */
 	public Controller getController() {
 		return controller;
 	}
